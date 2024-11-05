@@ -1,67 +1,669 @@
 $blue: #000055
+$dark-blue: #00003d
 $white: #ffffff
 $magenta: #FF267E
-$green: #3AFFC3
+$green: #05C48A
 $black: #1B1B1F
+$grey: #E3E3E3
+$second-grey: #A1A1A1
 
-$font-suisse-intl-reg: SuisseIntl-Regular, sans-serif
+$font-suisse-intl-semib: SuisseIntl-SemiBold, sans-serif
 $font-suisse-intl-bold: SuisseIntl-Bold, sans-serif
-$font-legal: DINPro-CondLight, sans-serif
-$font-riffic-bold: Riffic-Bold, sans-serif
+$font-suisse-intl-med: SuisseIntl-Medium, sans-serif
+$ibm-plex-bold: IBMPlexSans-Bold, sans-serif
+$roboto-cond-reg: RobotoCondensed-Regular, sans-serif
 
 body
   overscroll-behavior: none
+  -webkit-tap-highlight-color: transparent
+  background: $dark-blue
   img
     max-width: 100%
     height: auto
-.land
-  height: calc(100% - 83px)
+
+body.light
+  background: $dark-blue
+
+.title
+  text-align: center
+  color: $magenta
+  font-family: $ibm-plex-bold
+  font-size: 64px
   position: relative
-  &__logo
+  width: 100%
+
+.fav-page
+  display: flex
+  flex-direction: column
+  align-items: center
+  justify-content: flex-start
+  background: $dark-blue
+  overflow: hidden
+  position: relative
+.container
+  display: inherit
+  flex-direction: inherit
+  align-items: inherit
+  justify-content: inherit
+  max-width: 1150px
+  margin: 0 auto
+  &::before
+    content: ""
+    display: block
+    min-width: 1920px
+    width: 100%
+    height: 1020px
     position: absolute
+    z-index: 1
     top: 0
     left: 0
-    max-width: 300px
-.footer
-  background: $blue
-  height: 83px
-  display: flex
-  padding: 5px 20px 5px 35px
-  align-items: center
-  justify-content: space-between
+    background: url("../img/promo/bg.png") no-repeat 50% 100%/cover
+  &::after
+    content: ""
+    display: block
+    min-width: 1700px
+    max-width: 1700px
+    height: 880px
+    position: absolute
+    top: -60px
+    left: 50%
+    z-index: 0
+    transform: translate(-50%, 0)
+    background: url("../img/promo/bg-decor.png") no-repeat 0 0/contain
+
+.promo
+  z-index: 2
+  padding-top: 20px
+  width: 100%
+  min-width: 1240px
+  &::before, &::after
+    content: ""
+    display: block
+    width: 100%
+  &::before
+    height: 190px
+    background: url("../img/promo/top-decor.png") no-repeat 0 0/contain
+  &::after
+    height: 210px
+    background: url("../img/promo/bottom-decor.png") no-repeat 0 0/contain
   &__wrap
     display: flex
     align-items: center
-  &__text
-    color: $white
-    font-family: $font-suisse-intl-reg
-    font-size: 14px
-    line-height: 22px
-    max-width: 975px
-    opacity: .8
-  &__licensed
+    justify-content: space-between
+    padding: 0 20px
+  &__title
     display: flex
-    align-items: center
-    gap: 18px
-    margin: 0 35px 0 auto
-    flex-shrink: 0
-  &__btns
-    display: flex
-    align-items: center
-  &__appstore
-    display: block
-    background: url("../img/appleBtn.png") no-repeat 0 0/contain
-    width: 114px
-    height: 38px
-  &__googlePlay
-    display: block
-    background: url("../img/googleBtn.svg") no-repeat 0 0/contain
-    width: 128px
-    height: 38px
-    margin-left: 10px
+    flex-direction: column
+    padding-bottom: 15px
+    &-top
+      display: flex
+      align-items: center
+      padding-left: 15px
+      &-item
+        color: $grey
+        font-size: 82px
+        line-height: 82px
+        text-shadow: -4px 4px 0px rgba(206, 206, 206, 0.20)
+        text-transform: uppercase
+        font-family: $ibm-plex-bold
+        &:nth-child(2)
+          display: block
+          width: 1.41em
+          height: 1.41em
+          background: url("../img/promo/title-aim.png") no-repeat 0 0/contain
+          margin: 0 -0.1em
+          z-index: 2
+    &-bottom
+      display: flex
+      align-items: center
+      color: $grey
+      font-family: $ibm-plex-bold
+      font-size: 102px
+      line-height: 102px
+      margin-top: -5px
+      text-shadow: -4px 4px 0px rgba(206, 206, 206, 0.20)
+      &-item
+        font-size: 82px
+        font-family: inherit
+        line-height: 82px
+        text-shadow: inherit
+        color: inherit
+        text-transform: uppercase
+        margin: auto 0 2px 0
+  &__subtitle
+    max-width: 570px
+    align-self: flex-start
+    margin: 30px 0 0 40px
+    &-top
+      color: $magenta
+      font-family: $ibm-plex-bold
+      font-size: 40px
+      text-transform: uppercase
+    &-bottom
+      margin-top: 90px
+      font-family: $roboto-cond-reg
+      font-size: 10px
+      color: $second-grey
+      max-width: 480px
+  &__btn
+    display: inline-block
+    background: url("../img/promo/btn-bg.png") no-repeat 0 0/cover
+    background-size: 100% 100%
+    font-family: $font-suisse-intl-semib
+    color: $blue
+    font-size: 24px
+    line-height: 24px
+    text-transform: uppercase
+    padding: 32px 58px 42px 70px
+    margin: 40px auto 0 105px
+    align-self: flex-start
 
-.legal
-  font-family: $font-legal
-  font-size: 4.7vw
-  padding: 0 15px
-  text-align: center
+.guide
+  z-index: 2
+  width: 100%
+  display: flex
+  flex-direction: column
+  align-items: center
+  &__title
+    &::before, &::after
+      content: ""
+      display: block
+      position: absolute
+      background: url("../img/magenta-decor.png") no-repeat 0 0/contain
+    &::before
+      width: 202px
+      height: 202px
+      left: 0
+      top: 0
+      transform: translate(-100%, 0)
+    &::after
+      width: 233px
+      height: 233px
+      right: 0
+      top: 30px
+      transform: translate(100%, 0)
+  &__list
+    display: flex
+    align-items: center
+    justify-content: space-between
+    margin-top: 45px
+    max-width: 1150px
+    width: 100%
+    &-item
+      width: 350px
+      height: 150px
+      display: flex
+      align-items: center
+      position: relative
+      padding: 16px 16px 30px 22px
+      &:nth-child(1)
+        .guide__list-item-num
+          padding-right: 5px
+      &::before, &::after
+        content: ""
+        display: block
+        position: absolute
+      &::before
+        width: 346px
+        height: 67px
+        background: url("../img/guide/list-bottom.png") no-repeat 0 0/contain
+        bottom: 0
+        left: 0
+      &::after
+        width: 270px
+        height: 109px
+        top: 0
+        right: 0
+        background: url("../img/guide/list-top.png") no-repeat 0 0/contain
+      &-num
+        min-width: 110px
+        max-width: 110px
+        height: 105px
+        color: $blue
+        background: url("../img/guide/list-num.png") no-repeat 0 0/contain
+        text-transform: uppercase
+        font-size: 67px
+        font-family: $font-suisse-intl-bold
+        padding: 5px 0 0 0
+        text-align: center
+        margin-right: 15px
+      &-text
+        color: $white
+        font-size: 26px
+        font-family: $roboto-cond-reg
+.drop
+  max-width: 100%
+  margin: auto
+  width: 100%
+  padding: 50px 10px 0 10px
+  .dropdown
+    outline: none!important
+    cursor: pointer
+    position: relative
+    width: 100%
+    z-index: 1
+    text-align: start
+    summary::-webkit-details-marker
+      display: none
+    > summary
+      list-style: none
+    summary
+      padding: 26px 63px 24px 40px
+      font-family: $font-suisse-intl-semib
+      font-size: 20px
+      line-height: 30px
+      width: 100%
+      outline: none!important
+      border: 2px solid rgba($white, .1)
+      position: relative
+      display: flex
+      align-items: center
+      text-transform: uppercase
+      user-select: none
+      background: radial-gradient(71.22% 59.09% at 50% -10.39%, rgba(255, 255, 255, 0.00) 0%, rgba(255, 255, 255, 0.05) 50%, rgba(255, 255, 255, 0.00) 100%), rgba(255, 255, 255, 0.10)
+      border-radius: 10px
+      color: $white
+      ::-webkit-details-marker
+        display: none
+      &:after
+        content: ''
+        background: url("../img/drop-arrow.png") no-repeat 0 0/contain
+        display: inline-block
+        width: 42px
+        height: 45px
+        position: absolute
+        right: 25px
+        top: 24%
+    &[open]
+      summary
+        &:after
+          transform: rotate(180deg)
+          //opacity: .6
+    .drop-txt
+      margin-top: 5px
+      overflow-wrap: break-word
+      padding: 30px 43px 28px 25px
+      text-align: start
+      cursor: auto
+      background: linear-gradient(137deg, rgba($white, 0.1) 0%, rgba($white, 0.05) 100%)
+      border-radius: 20px
+      backdrop-filter: blur(10px)
+      border: 1px solid rgba($white, .1)
+      &-list
+        max-height: 500px
+        overflow-y: scroll
+        padding-right: 20px
+        scrollbar-width: auto
+        &::-webkit-scrollbar
+          background: rgba($white, .3)
+          width: 3px
+          border-radius: 50px
+        &::-webkit-scrollbar-thumb
+          position: relative
+          border-radius: 50px
+          background: $green
+      p, h2, h3, h4, h5, h6, strong, span
+        margin-bottom: 10px
+        font-family: $roboto-cond-reg
+        display: block
+        font-size: 14px
+        line-height: 22px
+        color: $grey
+        &:last-child
+          margin-bottom: 0
+        a
+          color: $green
+          text-decoration: underline
+          font-family: $roboto-cond-reg
+          position: relative
+          &:hover
+            text-decoration: none
+      strong
+        margin-bottom: 10px
+        font-size: 16px
+        font-family: $roboto-cond-reg
+        color: $white
+        display: block
+      .retreat1
+        padding-left: 20px
+      .retreat2
+        padding-left: 30px
+      .circle
+        padding-left: 20px
+        &:before
+          content: ''
+          width: 4px
+          height: 4px
+          background: $white
+          border-radius: 50%
+          display: inline-block
+          margin: 0 5px 3px 0
+.predict
+  width: 100%
+  display: flex
+  flex-direction: column
+  padding-top: 40px
+  &__title
+    &::before, &::after
+      content: ""
+      display: block
+      position: absolute
+      background: url("../img/magenta-decor.png") no-repeat 0 0/contain
+    &::before
+      width: 157px
+      height: 157px
+      left: 0
+      top: 0
+      transform: translate(130%, -95%)
+    &::after
+      width: 227px
+      height: 227px
+      right: 0
+      top: 0
+      transform: translate(-30%, -40%)
+  &__subtitle
+    z-index: 1
+    position: relative
+    color: $white
+    font-size: 26px
+    font-family: $roboto-cond-reg
+    text-align: center
+    padding: 0 45px
+    margin-top: 20px
+.table
+  width: 100%
+  display: flex
+  flex-direction: column
+  &::before, &::after
+    display: block
+    max-width: 1150px
+    min-width: 1150px
+    content: ""
+  &::before
+    order: 2
+    height: 202px
+    background: url("../img/table/table-top.png") no-repeat 0 0/contain
+    margin-bottom: -145px
+  &::after
+    order: 4
+    height: 190px
+    background: url("../img/table/table-bottom.png") no-repeat 0 0/contain
+    margin-top: -140px
+  &__title
+    order: 1
+  &__head
+    display: flex
+    width: 100%
+    border-radius: 100px 100px 0px 0px
+    background: linear-gradient(180deg, rgba(255, 38, 126, 0.00) 0%, rgba($magenta, .4) 100%)
+    padding: 21px 0 12px 33px
+    justify-content: flex-start
+    &-item
+      color: $magenta
+      font-size: 14px
+      letter-spacing: .02em
+      text-transform: uppercase
+      font-family: $font-suisse-intl-bold
+      &:nth-child(2)
+        margin-left: 40px
+      &:nth-child(3)
+        margin: 0 50px 0 120px
+      &:nth-child(4)
+        margin-right: 36px
+      &:nth-child(5)
+        margin-right: 38px
+      &:nth-child(6)
+        margin-right: auto
+  &__wrap
+    display: flex
+    flex-direction: column
+    align-items: center
+    width: 100%
+    max-width: 960px
+    margin: 0 auto
+    order: 3
+    &::after
+      content: ""
+      display: block
+      width: 100%
+      clip-path: polygon(1.46% 100%, 0% 0%, 100% 0%, 98.54% 100%)
+      opacity: .4
+      background: $magenta
+      height: 9px
+      max-width: 905px
+      margin-top: 12px
+  &__body
+    max-width: 905px
+    margin: 12px auto 0 auto
+    width: 100%
+    padding-left: 5px
+    border-top: 1px solid rgba(5, 196, 138, 0.20)
+    border-bottom: 1px solid rgba(5, 196, 138, 0.20)
+    &-row
+      display: flex
+      width: 100%
+      padding: 10px 0
+      &:not(:last-child)
+        border-bottom: 2px solid rgba(5, 196, 138, 0.20)
+      &-item
+        color: $white
+        font-size: 16px
+        font-family: $font-suisse-intl-med
+        text-align: center
+        width: 108px
+        text-transform: uppercase
+        &:nth-child(1)
+          width: 45px
+        &:nth-child(2)
+          text-align: left
+          margin-left: 45px
+        &:nth-child(3)
+          margin: 0 5px 0 15px
+        &:nth-child(5)
+          margin-left: 45px
+        &:nth-child(6)
+          width: 235px
+          margin: 0 auto 0 80px
+          text-align: left
+.predict
+  padding-bottom: 60px
+  &__teams
+    display: none
+    &._active
+      display: flex
+  &__container
+    margin-top: 110px
+    position: relative
+    &::before
+      content: ""
+      display: block
+      top: -50px
+      left: 50%
+      width: 1275px
+      height: 800px
+      transform: translate(-50%, 0)
+      position: absolute
+      background: url("../img/predict/predict-bg.png") no-repeat 0 0/contain
+  &__tabs
+    display: flex
+    gap: 45px
+    justify-content: center
+    &-item
+      display: flex
+      align-items: center
+      width: 256px
+      height: 89px
+      background: linear-gradient(0deg, rgba($magenta, .3) 0%, rgba(255, 38, 126, 0.00) 100%)
+      border-radius: 0px 0px 10px 10px
+      padding: 0 0 0 19px
+      pointer-events: initial
+      opacity: .3
+      position: relative
+      &::before
+        content: ""
+        display: block
+        position: absolute
+        top: -63px
+        left: 50%
+        transform: translate(-50%, 0)
+        width: 204px
+        height: 15px
+        background: $magenta
+        clip-path: polygon(0% 100%, 4.9% 0%, 95.1% 0%, 100% 100%)
+      &::after
+        content: ""
+        display: block
+        position: absolute
+        width: 272px
+        height: 110px
+        bottom: -17px
+        left: -17px
+        background: url("../img/predict/predict-decor.png") no-repeat 0 0/contain
+      &:hover
+        cursor: pointer
+      &._active
+        pointer-events: none
+        opacity: 1
+        &:hover
+          cursor: default
+    &-num
+      color: $magenta
+      font-family: $font-suisse-intl-bold
+      font-size: 96px
+    &-text
+      color: $magenta
+      font-family: $font-suisse-intl-bold
+      font-size: 20px
+      text-transform: uppercase
+    &-data
+      color: $grey
+      font-size: 20px
+      font-family: $font-suisse-intl-semib
+      margin-top: 5px
+    &-wrap
+      display: flex
+      flex-direction: column
+      margin-left: 15px
+  &__stage
+    display: flex
+    flex-direction: column
+    align-items: center
+  &__top
+    width: 950px
+    display: flex
+    margin-top: 55px
+    justify-content: space-between
+  &__info
+    width: 270px
+    height: 270px
+    background: url("../img/predict/info-bg.png") no-repeat 0 0/contain
+  &__win, &__lose
+    display: flex
+    flex-direction: column
+    align-items: center
+    &-icon
+      background: url("../img/predict/icon-green.png") no-repeat 0 0/contain
+      width: 100%
+      height: 100%
+      max-width: 125px
+      max-height: 102px
+    &-card
+      width: 295px
+      height: 200px
+      display: flex
+      flex-direction: column
+      align-items: center
+      justify-content: flex-start
+      background: linear-gradient(0deg, rgba($green, .2) 0%, rgba(2, 94, 66, 0.00) 100%)
+      border-radius: 20px
+      margin-top: 30px
+      padding: 10px 0
+      position: relative
+      &::before
+        content: ""
+        display: block
+        position: absolute
+        top: -16px
+        right: -19px
+        width: 238px
+        height: 67px
+        background: url("../img/predict/green-top-decor.png") no-repeat 0 0/contain
+      &::after
+        display: block
+        content: ""
+        width: 238px
+        height: 66px
+        bottom: -20px
+        left: -18px
+        position: absolute
+        background: url("../img/predict/green-bottom-decor.png") no-repeat 0 0/contain
+    &-btn
+      margin-top: auto
+      width: 56px
+      height: 56px
+      background: url("../img/predict/plus.png") no-repeat 0 0/contain
+    &-title
+      font-size: 40px
+      font-family: $font-suisse-intl-bold
+      letter-spacing: .04em
+      text-transform: uppercase
+      position: relative
+      display: inline-block
+      color: $green
+      &::before
+        content: ""
+        display: block
+        position: absolute
+        bottom: -10px
+        left: 50%
+        transform: translate(-50%, 0)
+        width: 87px
+        height: 6px
+        background: $green
+        clip-path: polygon(0% 100%, 4.9% 0%, 95.1% 0%, 100% 100%)
+  &__bottom
+    margin-top: 60px
+    &-title
+      color: $magenta
+      font-size: 20px
+      letter-spacing: .04em
+      font-family: $font-suisse-intl-bold
+      text-transform: uppercase
+      margin: 0 auto
+      text-align: center
+  &__list
+    display: flex
+    align-items: center
+    justify-content: center
+    gap: 10px
+    margin-top: 25px
+    &-team
+      display: none
+    &-item
+      background: linear-gradient(0deg, rgba($green, .2) 0%, rgba(2, 94, 66, 0.00) 55.56%)
+      width: 140px
+      height: 125px
+      border-radius: 10px
+      display: flex
+      flex-direction: column
+      position: relative
+      &::before
+        content: ""
+        display: block
+        width: 120px
+        height: 77px
+        background: url("../img/predict/list-green-decor.png") no-repeat 0 0/contain
+        position: absolute
+        top: -3px
+        right: -4px
+      &-btn
+        width: 40px
+        height: 40px
+        margin: auto auto 0 auto
+        transform: translate(0, 50%)
+        background: url("../img/predict/plus.png") no-repeat 0 0/contain
+      &-icon
+        width: 81px
+        height: 68px
+        margin: 20px auto 0 auto
+        background: url("../img/predict/icon-green.png") no-repeat 0 0/contain

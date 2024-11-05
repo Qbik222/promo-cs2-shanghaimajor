@@ -1,31 +1,222 @@
-.land
-    .land__logo
-        img(src="./img/logo.png" alt="favbet")
-    //.land__left
-    //    .land__title До нових висот з бонусом*
-    //    .land__prize 15 000₴
-    //    .land__spins + 300 фрiспiнiв
-    //    .land__btn хапай штурвал
-    //.land__right
-    //    .land__right-pers
-    //        img(src="./img/pers.png" alt="favbet")
-    //    .land__right-plane
-    //        img(src="./img/plane.png" alt="favbet")
-.footer
-    .footer__text  ТОВ «БУКМЕКЕРСЬКА КОМПАНІЯ «ФАВБЕТ». Ліцензія на провадження діяльності з організації та проведення букмекерської діяльності від 28.12.2022, видана згідно з рішенням КРАІЛ № 433 від 13.12.2022 та Ліцензія на провадження діяльності з організації та проведення азартних ігор казино в мережі Інтернет від 20.04.2021, видана згідно з рішенням КРАІЛ № 137 від 05.04.2021, зі змінами.
-    .footer__wrap
-        ul.footer__licensed
-            li.footer__licensed-item
-                img(src="./img/age.svg" alt="favbet")
-            li.footer__licensed-item
-                img(src="./img/applePay.svg" alt="favbet")
-            li.footer__licensed-item
-                img(src="./img/googlePay.svg" alt="favbet")
-            li.footer__licensed-item
-                img(src="./img/visa.svg" alt="favbet")
-            li.footer__licensed-item
-                img(src="./img/mastercard.svg" alt="favbet")
-        .footer__btns
-            a(href="https://apps.apple.com/ua/app/favbet-ua/id1580749519" target="_blank").footer__appstore
-            a(href="https://favbet.ua/minio/android-files/FavbetUA.apk" target="_blank").footer__googlePlay
-.legal УЧАСТЬ В АЗАРТНИХ ІГРАХ МОЖЕ ВИКЛИКАТИ ІГРОВУ ЗАЛЕЖНІСТЬ. ДОТРИМУЙТЕСЯ ПРАВИЛ (ПРИНЦИПІВ) ВІДПОВІДАЛЬНОЇ ГРИ
+.fav-page
+    .container
+        .promo
+            .promo__wrap
+                .promo__title
+                    .promo__title-top
+                        span.promo__title-top-item п
+                        span.promo__title-top-item
+                        span.promo__title-top-item ціль у
+                    .promo__title-bottom 1 000 000 #[span.promo__title-bottom-item ₴*]
+                    a(href="#").promo__btn взяти участь
+                .promo__subtitle
+                    .promo__subtitle-top Прогнозуй кіберспортивний турнір «Shanghai Major 2024»
+                    .promo__subtitle-bottom.
+                        *Акція "Поціль у 1 000 000 ₴" від Favbet. Загальний призовий фонд акції складається
+                        з 1 000 000 електронних грошових замінників. Деталі на сайті www.favbet.ua.
+                        Період дії акції – з 22.11.2024 до 15.12.2024 року.
+        .guide
+            .guide__title.title Як взяти участь?
+            .guide__list
+                .guide__list-item
+                    .guide__list-item-num 1
+                    .guide__list-item-text Натисни кнопку «Взяти участь»
+                .guide__list-item
+                    .guide__list-item-num 2
+                    .guide__list-item-text Роби виграшні ставки на турнір «Shanghai Major 2024»
+                .guide__list-item
+                    .guide__list-item-num 3
+                    .guide__list-item-text Роби прогнози на кожен етап та помножуй вже набрані бали
+        .drop
+            details.dropdown
+                summary(data-translate="rulesTitlePrize") розподіл призів
+                .drop-txt
+                    .drop-txt-list(data-translate="rulesTxtPrize")
+        .predict
+            .predict__title.title Роби прогноз
+            .predict__subtitle.
+                Роби прогнози на кожен із етапів кіберспортивного турніру
+                "PGL Major Copenhagen 2024". Кожне правильне влучання - один множник.
+                За правильний фінальний прогноз отримай 10 множників.
+                Чим більше точних прогнозів та балів - тим вищий шанс отримати нагороду.
+            .predict__container
+                .predict__teams.stage1
+                    .predict__teams-title вибери команду на #[span.predict__teams-title-score ]
+                    .predict__teams-item.team команда #[span.team-name «Faze Clan»]
+                    .predict__teams-item.team команда #[span.team-name «Sangal Esports»]
+                    .predict__teams-item.team команда #[span.team-name «FlyQuest»]
+                    .predict__teams-item.team команда #[span.team-name «Eternal Fire»]
+                    .predict__teams-item.team команда #[span.team-name «Heroic»]
+                    .predict__teams-item.team команда #[span.team-name «Ninjas in Pyjamas»]
+                    .predict__teams-item.team команда #[span.team-name «Lynn Vision»]
+                    .predict__teams-item.team команда #[span.team-name «Natus Vincere»]
+                .predict__teams.stage2
+                    .predict__teams-title вибери команду на #[span.predict__teams-title-score ]
+                    .predict__teams-item.team команда #[span.team-name «Team Spirit»]
+                    .predict__teams-item.team команда #[span.team-name «Wildcard»]
+                    .predict__teams-item.team команда #[span.team-name «MIBR»]
+                    .predict__teams-item.team команда #[span.team-name «9z Team»]
+                    .predict__teams-item.team команда #[span.team-name «The Mongolz»]
+                    .predict__teams-item.team команда #[span.team-name «3DMAX»]
+                    .predict__teams-item.team команда #[span.team-name «KOI»]
+                    .predict__teams-item.team команда #[span.team-name «G2 Esports»]
+                .predict__teams.stage3
+                    .predict__teams-title вибери команду на #[span.predict__teams-title-score ]
+                    .predict__teams-item.team команда #[span.team-name «MOUZ»]
+                    .predict__teams-item.team команда #[span.team-name «Rooster»]
+                    .predict__teams-item.team команда #[span.team-name «BIG»]
+                    .predict__teams-item.team команда #[span.team-name «Imperial Esports»]
+                    .predict__teams-item.team команда #[span.team-name «Complexity»]
+                    .predict__teams-item.team команда #[span.team-name «M80»]
+                    .predict__teams-item.team команда #[span.team-name «Fnatic»]
+                    .predict__teams-item.team команда #[span.team-name «Astralis»]
+                .predict__tabs
+                    .predict__tabs-item._active
+                        .predict__tabs-num 1
+                        .predict__tabs-wrap
+                            .predict__tabs-text етап
+                            .predict__tabs-data 10.03 - 31.03
+                    .predict__tabs-item
+                        .predict__tabs-num 2
+                        .predict__tabs-wrap
+                            .predict__tabs-text етап
+                            .predict__tabs-data 10.03 - 31.03
+                    .predict__tabs-item
+                        .predict__tabs-num 3
+                        .predict__tabs-wrap
+                            .predict__tabs-text етап
+                            .predict__tabs-data 10.03 - 31.03
+                .predict__stage
+                    .predict__top
+                        .predict__win
+                            .predict__win-title 3 : 0
+                            .predict__win-card
+                                .predict__win-icon
+                                .predict__win-team
+                                .predict__win-btn
+                        .predict__info
+                        .predict__lose
+                            .predict__lose-title 0 : 3
+                            .predict__lose-card
+                                .predict__lose-icon
+                                .predict__lose-team
+                                .predict__lose-btn
+                    .predict__bottom
+                        .predict__bottom-title Обери 7 команд, які пройдуть до наступного етапу
+                        .predict__list
+                            .predict__list-item
+                                .predict__list-item-icon
+                                .predict__list-item-team
+                                .predict__list-item-btn
+                            .predict__list-item
+                                .predict__list-item-icon
+                                .predict__list-item-team
+                                .predict__list-item-btn
+                            .predict__list-item
+                                .predict__list-item-icon
+                                .predict__list-item-team
+                                .predict__list-item-btn
+                            .predict__list-item
+                                .predict__list-item-icon
+                                .predict__list-item-team
+                                .predict__list-item-btn
+                            .predict__list-item
+                                .predict__list-item-icon
+                                .predict__list-item-team
+                                .predict__list-item-btn
+                            .predict__list-item
+                                .predict__list-item-icon
+                                .predict__list-item-team
+                                .predict__list-item-btn
+                            .predict__list-item
+                                .predict__list-item-icon
+                                .predict__list-item-team
+                                .predict__list-item-btn
+
+        .table
+            .table__title.title Учасники
+            .table__wrap
+                .table__head
+                    .table__head-item Місце
+                    .table__head-item ID
+                    .table__head-item множник
+                    .table__head-item бали
+                    .table__head-item Баля після множника
+                    .table__head-item приз*
+                .table__body
+                    .table__body-row
+                        .table__body-row-item 1
+                        .table__body-row-item 1234567890
+                        .table__body-row-item 45
+                        .table__body-row-item 999
+                        .table__body-row-item 99999
+                        .table__body-row-item Sennheiser G4ME ZERO
+                    .table__body-row
+                        .table__body-row-item 2
+                        .table__body-row-item 1234567890
+                        .table__body-row-item 45
+                        .table__body-row-item 999
+                        .table__body-row-item 99999
+                        .table__body-row-item Sennheiser G4ME ZERO
+                    .table__body-row
+                        .table__body-row-item 3
+                        .table__body-row-item 1234567890
+                        .table__body-row-item 45
+                        .table__body-row-item 999
+                        .table__body-row-item 99999
+                        .table__body-row-item Sennheiser G4ME ZERO
+                    .table__body-row
+                        .table__body-row-item 4
+                        .table__body-row-item 1234567890
+                        .table__body-row-item 45
+                        .table__body-row-item 999
+                        .table__body-row-item 99999
+                        .table__body-row-item Sennheiser G4ME ZERO
+                    .table__body-row
+                        .table__body-row-item 5
+                        .table__body-row-item 1234567890
+                        .table__body-row-item 45
+                        .table__body-row-item 999
+                        .table__body-row-item 99999
+                        .table__body-row-item Sennheiser G4ME ZERO
+                    .table__body-row
+                        .table__body-row-item 6
+                        .table__body-row-item 1234567890
+                        .table__body-row-item 45
+                        .table__body-row-item 999
+                        .table__body-row-item 99999
+                        .table__body-row-item Sennheiser G4ME ZERO
+                    .table__body-row
+                        .table__body-row-item 7
+                        .table__body-row-item 1234567890
+                        .table__body-row-item 45
+                        .table__body-row-item 999
+                        .table__body-row-item 99999
+                        .table__body-row-item Sennheiser G4ME ZERO
+                    .table__body-row
+                        .table__body-row-item 8
+                        .table__body-row-item 1234567890
+                        .table__body-row-item 45
+                        .table__body-row-item 999
+                        .table__body-row-item 99999
+                        .table__body-row-item Sennheiser G4ME ZERO
+                    .table__body-row
+                        .table__body-row-item 9
+                        .table__body-row-item 1234567890
+                        .table__body-row-item 45
+                        .table__body-row-item 999
+                        .table__body-row-item 99999
+                        .table__body-row-item Sennheiser G4ME ZERO
+                    .table__body-row
+                        .table__body-row-item 10
+                        .table__body-row-item 1234567890
+                        .table__body-row-item 45
+                        .table__body-row-item 999
+                        .table__body-row-item 99999
+                        .table__body-row-item Sennheiser G4ME ZERO
+            a(href="#").table__btn.btn взяти участь
+        .drop
+            details.dropdown
+                summary(data-translate="rulesTitle") офіційні правила акції
+                .drop-txt
+                    .drop-txt-list(data-translate="rulesTxt")
