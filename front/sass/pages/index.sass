@@ -342,7 +342,398 @@ body.light
   width: 100%
   display: flex
   flex-direction: column
-  padding-top: 40px
+  padding: 40px 0 60px 0
+  &__overlay
+    width: 100%
+    height: 100%
+    position: fixed
+    top: 0
+    left: 0
+    z-index: 10
+    background: rgba(#01013E, .8)
+    display: none
+    &._active
+      display: block
+  &__teams
+    display: none
+    position: absolute
+    top: 50%
+    left: 50%
+    transform: translate(-50%, -50%)
+    width: 410px
+    height: 525px
+    background: $blue
+    flex-direction: column
+    padding: 20px 25px 25px 20px
+    border-radius: 10px
+    &::before
+      content: ""
+      display: block
+      position: absolute
+      top: 0
+      right: 0
+      width: 235px
+      height: 67px
+      background: url("../img/predict/popup-top-decor.png") no-repeat 0 0/contain
+    &::after
+      content: ""
+      display: block
+      position: absolute
+      bottom: 0
+      left: 0
+      width: 235px
+      height: 67px
+      background: url("../img/predict/green-bottom-decor.png") no-repeat 0 0/contain
+    &-wrap
+      width: 100%
+      height: 100%
+      background: rgba($green, .2)
+      border-radius: 10px
+      padding: 23px 12px 31px 13px
+    &-close
+      width: 26px
+      height: 26px
+      background: url("../img/close.png") no-repeat 0 0/contain
+      position: absolute
+      top: 10px
+      right: 10px
+      transform: translate(100%, -100%)
+      &:hover
+        cursor: pointer
+    &-title
+      text-transform: uppercase
+      color: $grey
+      font-family: $font-suisse-intl-bold
+      font-size: 20px
+      line-height: 33px
+      letter-spacing: .02em
+      border-bottom: 1px solid $blue
+      padding: 0 0 10px 5px
+      margin-bottom: 20px
+      &-score
+        margin-left: auto
+        font-family: inherit
+        font-size: inherit
+        line-height: inherit
+        color: $magenta
+        letter-spacing: inherit
+    &-item
+      font-family: $font-suisse-intl-med
+      color: rgba($white, .8)
+      font-size: 16px
+      line-height: 19px
+      letter-spacing: .03em
+      padding: 4px 0 13px 18px
+      position: relative
+      &:hover
+        cursor: pointer
+      &:not(:first-child)
+        margin-top: 10px
+      &::before
+        content: ""
+        display: block
+        position: absolute
+        bottom: 0
+        left: 0
+        background: url("../img/predict/team-popup-decor.png") no-repeat 0 0/contain
+        width: 100%
+        height: 100%
+      &::after
+        content: ""
+        display: block
+        position: absolute
+        left: -18px
+        top: -6px
+        height: 39px
+        width: 6px
+        background: $magenta
+        clip-path: polygon(0% 7.3%, 0% 92.7%, 100% 100%, 100% 0%)
+      .team-name
+        color: $magenta
+        font-size: inherit
+        line-height: inherit
+        letter-spacing: inherit
+        font-family: inherit
+        &::before
+          content: ""
+          display: block
+          width: 30px
+          height: 30px
+          position: absolute
+          top: 50%
+          right: 5px
+          transform: translate(0, -50%)
+          background: url("../img/predict/plus.png") no-repeat 0 0/contain
+    &._active
+      display: flex
+  &__container
+    margin-top: 110px
+    position: relative
+    &::before
+      content: ""
+      display: block
+      top: -50px
+      left: 50%
+      width: 1275px
+      height: 800px
+      transform: translate(-50%, 0)
+      position: absolute
+      background: url("../img/predict/predict-bg.png") no-repeat 0 0/contain
+  &__tabs
+    display: flex
+    gap: 45px
+    justify-content: center
+    &-item
+      display: flex
+      align-items: center
+      width: 256px
+      height: 89px
+      background: linear-gradient(0deg, rgba($magenta, .3) 0%, rgba(255, 38, 126, 0.00) 100%)
+      border-radius: 0px 0px 10px 10px
+      padding: 0 0 0 19px
+      pointer-events: initial
+      opacity: .3
+      position: relative
+      &::before
+        content: ""
+        display: block
+        position: absolute
+        top: -63px
+        left: 50%
+        transform: translate(-50%, 0)
+        width: 204px
+        height: 15px
+        background: $magenta
+        clip-path: polygon(0% 100%, 4.9% 0%, 95.1% 0%, 100% 100%)
+      &::after
+        content: ""
+        display: block
+        position: absolute
+        width: 272px
+        height: 110px
+        bottom: -17px
+        left: -17px
+        background: url("../img/predict/predict-decor.png") no-repeat 0 0/contain
+      &:hover
+        cursor: pointer
+      &._active
+        pointer-events: none
+        opacity: 1
+        &:hover
+          cursor: default
+    &-num
+      color: $magenta
+      font-family: $font-suisse-intl-bold
+      font-size: 96px
+    &-text
+      color: $magenta
+      font-family: $font-suisse-intl-bold
+      font-size: 20px
+      text-transform: uppercase
+    &-data
+      color: $grey
+      font-size: 20px
+      font-family: $font-suisse-intl-semib
+      margin-top: 5px
+    &-wrap
+      display: flex
+      flex-direction: column
+      margin-left: 15px
+  &__stage
+    //display: flex
+    display: none
+    flex-direction: column
+    align-items: center
+    &._active
+      display: flex
+  &__top
+    width: 950px
+    display: flex
+    margin-top: 55px
+    justify-content: space-between
+  &__info
+    width: 270px
+    height: 270px
+    background: url("../img/predict/info-bg.png") no-repeat 0 0/contain
+  &__win, &__lose
+    display: flex
+    flex-direction: column
+    align-items: center
+    &:hover
+      cursor: pointer
+    &-icon
+      background: url("../img/predict/icon-green.png") no-repeat 0 0/contain
+      width: 100%
+      height: 100%
+      max-width: 125px
+      max-height: 102px
+    &-team
+      display: none
+      color: rgba($white, .8)
+      font-size: 24px
+      line-height: 29px
+      font-family: $font-suisse-intl-med
+      text-align: center
+    &-card
+      width: 295px
+      height: 200px
+      display: flex
+      flex-direction: column
+      align-items: center
+      justify-content: flex-start
+      background: linear-gradient(0deg, rgba($green, .2) 0%, rgba(2, 94, 66, 0.00) 100%)
+      border-radius: 20px
+      margin-top: 30px
+      padding: 10px 0
+      position: relative
+      &::before
+        content: ""
+        display: block
+        position: absolute
+        top: -16px
+        right: -19px
+        width: 238px
+        height: 67px
+        background: url("../img/predict/green-top-decor.png") no-repeat 0 0/contain
+      &::after
+        display: block
+        content: ""
+        width: 238px
+        height: 66px
+        bottom: -20px
+        left: -18px
+        position: absolute
+        background: url("../img/predict/green-bottom-decor.png") no-repeat 0 0/contain
+    &-btn
+      margin-top: auto
+      min-width: 56px
+      min-height: 56px
+      background: url("../img/predict/plus.png") no-repeat 0 0/contain
+      pointer-events: none
+    &-title
+      font-size: 40px
+      font-family: $font-suisse-intl-bold
+      letter-spacing: .04em
+      text-transform: uppercase
+      position: relative
+      display: inline-block
+      color: $green
+      &::before
+        content: ""
+        display: block
+        position: absolute
+        bottom: -10px
+        left: 50%
+        transform: translate(-50%, 0)
+        width: 87px
+        height: 6px
+        background: $green
+        clip-path: polygon(0% 100%, 4.9% 0%, 95.1% 0%, 100% 100%)
+    &._select
+      .predict
+        &__win, &__lose
+          &-card
+            &::before
+              background: url("../img/predict/red-top-decor.png") no-repeat 0 0/contain
+            &::after
+              background: url("../img/predict/red-bottom-decor.png") no-repeat 0 0/contain
+          &-icon
+            background: url("../img/predict/icon-red.png") no-repeat 0 0/contain
+            width: 74px
+            height: 61px
+          &-team
+            display: block
+          &-btn
+            background: url("../img/predict/close.png") no-repeat 0 0/contain
+            z-index: 3
+            transition: opacity .4s ease-in-out
+            pointer-events: initial
+            &:hover
+              cursor: pointer
+              opacity: .8
+
+
+  &__bottom
+    margin-top: 60px
+    &-title
+      color: $magenta
+      font-size: 20px
+      letter-spacing: .04em
+      font-family: $font-suisse-intl-bold
+      text-transform: uppercase
+      margin: 0 auto
+      text-align: center
+  &__list
+    display: flex
+    align-items: center
+    justify-content: center
+    gap: 10px
+    margin-top: 25px
+    &-item
+      background: linear-gradient(0deg, rgba($green, .2) 0%, rgba(2, 94, 66, 0.00) 55.56%)
+      width: 140px
+      height: 125px
+      border-radius: 10px
+      display: flex
+      flex-direction: column
+      position: relative
+      &:hover
+        cursor: pointer
+      &::before
+        content: ""
+        display: block
+        width: 120px
+        height: 77px
+        background: url("../img/predict/list-green-decor.png") no-repeat 0 0/contain
+        position: absolute
+        top: -3px
+        right: -4px
+      &-btn
+        min-width: 40px
+        min-height: 40px
+        margin: auto auto 0 auto
+        transform: translate(0, 50%)
+        background: url("../img/predict/plus.png") no-repeat 0 0/contain
+        //pointer-events: none
+        cursor: pointer
+      &-icon
+        width: 81px
+        height: 68px
+        margin: 20px auto 0 auto
+        background: url("../img/predict/icon-green.png") no-repeat 0 0/contain
+      &-team
+        display: none
+        color: rgba($white, .8)
+        font-size: 14px
+        line-height: 17px
+        letter-spacing: .03em
+        text-align: center
+        font-family: $font-suisse-intl-med
+        margin-top: 12px
+      &._select
+        &::before
+          background: url("../img/predict/list-red-decor.png") no-repeat 0 0/contain
+        .predict
+          &__list
+            &-item
+              &-icon
+                width: 52px
+                min-height: 42px
+                margin-top: 10px
+                background: url("../img/predict/icon-red.png") no-repeat 0 0/contain
+              &-team
+                display: block
+              &-btn
+                background: url("../img/predict/close.png") no-repeat 0 0/contain
+                transform: translate(0, 13%)
+                min-width: 43px
+                min-height: 43px
+                transition: opacity .4s ease-in-out
+                //pointer-events: initial
+                &:hover
+                  opacity: .8
+
+
   &__title
     &::before, &::after
       content: ""
@@ -465,205 +856,5 @@ body.light
           width: 235px
           margin: 0 auto 0 80px
           text-align: left
-.predict
-  padding-bottom: 60px
-  &__teams
-    display: none
-    &._active
-      display: flex
-  &__container
-    margin-top: 110px
-    position: relative
-    &::before
-      content: ""
-      display: block
-      top: -50px
-      left: 50%
-      width: 1275px
-      height: 800px
-      transform: translate(-50%, 0)
-      position: absolute
-      background: url("../img/predict/predict-bg.png") no-repeat 0 0/contain
-  &__tabs
-    display: flex
-    gap: 45px
-    justify-content: center
-    &-item
-      display: flex
-      align-items: center
-      width: 256px
-      height: 89px
-      background: linear-gradient(0deg, rgba($magenta, .3) 0%, rgba(255, 38, 126, 0.00) 100%)
-      border-radius: 0px 0px 10px 10px
-      padding: 0 0 0 19px
-      pointer-events: initial
-      opacity: .3
-      position: relative
-      &::before
-        content: ""
-        display: block
-        position: absolute
-        top: -63px
-        left: 50%
-        transform: translate(-50%, 0)
-        width: 204px
-        height: 15px
-        background: $magenta
-        clip-path: polygon(0% 100%, 4.9% 0%, 95.1% 0%, 100% 100%)
-      &::after
-        content: ""
-        display: block
-        position: absolute
-        width: 272px
-        height: 110px
-        bottom: -17px
-        left: -17px
-        background: url("../img/predict/predict-decor.png") no-repeat 0 0/contain
-      &:hover
-        cursor: pointer
-      &._active
-        pointer-events: none
-        opacity: 1
-        &:hover
-          cursor: default
-    &-num
-      color: $magenta
-      font-family: $font-suisse-intl-bold
-      font-size: 96px
-    &-text
-      color: $magenta
-      font-family: $font-suisse-intl-bold
-      font-size: 20px
-      text-transform: uppercase
-    &-data
-      color: $grey
-      font-size: 20px
-      font-family: $font-suisse-intl-semib
-      margin-top: 5px
-    &-wrap
-      display: flex
-      flex-direction: column
-      margin-left: 15px
-  &__stage
-    display: flex
-    flex-direction: column
-    align-items: center
-  &__top
-    width: 950px
-    display: flex
-    margin-top: 55px
-    justify-content: space-between
-  &__info
-    width: 270px
-    height: 270px
-    background: url("../img/predict/info-bg.png") no-repeat 0 0/contain
-  &__win, &__lose
-    display: flex
-    flex-direction: column
-    align-items: center
-    &-icon
-      background: url("../img/predict/icon-green.png") no-repeat 0 0/contain
-      width: 100%
-      height: 100%
-      max-width: 125px
-      max-height: 102px
-    &-card
-      width: 295px
-      height: 200px
-      display: flex
-      flex-direction: column
-      align-items: center
-      justify-content: flex-start
-      background: linear-gradient(0deg, rgba($green, .2) 0%, rgba(2, 94, 66, 0.00) 100%)
-      border-radius: 20px
-      margin-top: 30px
-      padding: 10px 0
-      position: relative
-      &::before
-        content: ""
-        display: block
-        position: absolute
-        top: -16px
-        right: -19px
-        width: 238px
-        height: 67px
-        background: url("../img/predict/green-top-decor.png") no-repeat 0 0/contain
-      &::after
-        display: block
-        content: ""
-        width: 238px
-        height: 66px
-        bottom: -20px
-        left: -18px
-        position: absolute
-        background: url("../img/predict/green-bottom-decor.png") no-repeat 0 0/contain
-    &-btn
-      margin-top: auto
-      width: 56px
-      height: 56px
-      background: url("../img/predict/plus.png") no-repeat 0 0/contain
-    &-title
-      font-size: 40px
-      font-family: $font-suisse-intl-bold
-      letter-spacing: .04em
-      text-transform: uppercase
-      position: relative
-      display: inline-block
-      color: $green
-      &::before
-        content: ""
-        display: block
-        position: absolute
-        bottom: -10px
-        left: 50%
-        transform: translate(-50%, 0)
-        width: 87px
-        height: 6px
-        background: $green
-        clip-path: polygon(0% 100%, 4.9% 0%, 95.1% 0%, 100% 100%)
-  &__bottom
-    margin-top: 60px
-    &-title
-      color: $magenta
-      font-size: 20px
-      letter-spacing: .04em
-      font-family: $font-suisse-intl-bold
-      text-transform: uppercase
-      margin: 0 auto
-      text-align: center
-  &__list
-    display: flex
-    align-items: center
-    justify-content: center
-    gap: 10px
-    margin-top: 25px
-    &-team
-      display: none
-    &-item
-      background: linear-gradient(0deg, rgba($green, .2) 0%, rgba(2, 94, 66, 0.00) 55.56%)
-      width: 140px
-      height: 125px
-      border-radius: 10px
-      display: flex
-      flex-direction: column
-      position: relative
-      &::before
-        content: ""
-        display: block
-        width: 120px
-        height: 77px
-        background: url("../img/predict/list-green-decor.png") no-repeat 0 0/contain
-        position: absolute
-        top: -3px
-        right: -4px
-      &-btn
-        width: 40px
-        height: 40px
-        margin: auto auto 0 auto
-        transform: translate(0, 50%)
-        background: url("../img/predict/plus.png") no-repeat 0 0/contain
-      &-icon
-        width: 81px
-        height: 68px
-        margin: 20px auto 0 auto
-        background: url("../img/predict/icon-green.png") no-repeat 0 0/contain
+  &__btn
+    order: 4
