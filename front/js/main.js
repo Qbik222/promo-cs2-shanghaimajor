@@ -18,6 +18,37 @@ document.addEventListener("DOMContentLoaded", ()=>{
     // let setStatus;
 
 
+    function setPopup(overlay, btns, popups,  btnWraps) {
+        btns.forEach((btn, i) => {
+            btn.addEventListener("click", (e) => {
+                let predictBtns = document.querySelectorAll(".cards-btn"),
+                    targetClick = true
+                // console.log(predictBtns)
+                predictBtns.forEach(predictBtn =>{
+                    let storageData = e.target.parentElement.getAttribute("data-storage")
+                    if(predictBtn === e.target && storageData !== null){
+                        targetClick = false
+                        e.target.parentElement.removeAttribute("data-storage")
+                    }
+                    return targetClick
+                })
+                if(targetClick){
+                    let index;
+                    btnWraps.forEach((wrap, i) =>{
+                        if(btn.parentElement === wrap){
+                            return index = i
+                        }
+                    })
+                    showPopup(popups, overlay, index)
+                    return currentCard = btn
+                }
+            });
+        });
+    }
+
+    setPopup(predictOverlay, predictListItem, predictPopups, predictList)
+
+
     function showPopup(popups, overlay, index){
         popups.forEach(popup => popup.classList.remove("_active"));
         overlay.classList.add("_active");
@@ -49,38 +80,6 @@ document.addEventListener("DOMContentLoaded", ()=>{
     setPopupWinLose(predictOverlay, winCards, predictPopups, predictBtns)
     setPopupWinLose(predictOverlay, loseCards, predictPopups, predictBtns)
 
-
-    function setPopup(overlay, btns, popups, predictBtns, btnWraps) {
-        btns.forEach((btn, i) => {
-            btn.addEventListener("click", (e) => {
-                let targetClick = true
-                // console.log(predictBtns)
-                predictBtns.forEach(predictBtn =>{
-                    console.log(predictBtn.parentElement)
-                    if(predictBtn.parentElement.classList.contains("_select") === true){
-                        targetClick = false
-                        console.log("dsadsa")
-                    }
-                    if(predictBtn === e.target){
-                        targetClick = false
-                    }
-                    return targetClick
-                })
-                if(targetClick){
-                    let index;
-                    btnWraps.forEach((wrap, i) =>{
-                        if(btn.parentElement === wrap){
-                            return index = i
-                        }
-                    })
-                    showPopup(popups, overlay, index)
-                    return currentCard = btn
-                }
-            });
-        });
-    }
-
-    setPopup(predictOverlay, predictListItem, predictPopups, predictBtns, predictList)
 
 
     function setTeam(teams, cardsText, overlay, popups, status) {
@@ -128,7 +127,7 @@ document.addEventListener("DOMContentLoaded", ()=>{
                 list.childNodes.forEach((item, i) =>{
                     let stage = list.getAttribute("data-stage"),
                         key = `selectedTeam-${stage}-card${++i}`,
-                        teamTextBlock = item.querySelector(`.${item.classList}-team`)
+                        teamTextBlock = item.querySelector(`.${item.classList[0]}-team`)
                     teams.forEach((team) => {
                         team.addEventListener("click", (e) => {
                             if(item === currentCard){
@@ -174,7 +173,6 @@ document.addEventListener("DOMContentLoaded", ()=>{
                 if(!dataBtn){
                     btnParent = removeBtn.parentElement
                     dataBtn = btnParent.getAttribute("data-storage")
-
                 }
                 localStorage.removeItem(dataBtn)
                 btnParent.classList.remove("_select")
@@ -195,9 +193,92 @@ document.addEventListener("DOMContentLoaded", ()=>{
                 item.classList.remove("_active")
                 if(tabIndex === stageIndex){
                     item.classList.add("_active")
+                    if(item.classList.contains("stage3")){
+                        item.parentElement.classList.add('stage3')
+                    }else{
+                        item.parentElement.classList.remove('stage3')
+                    }
                 }
             })
             e.target.classList.add("_active")
         })
     })
+
+// countdown timer
+    function startCountdown(element) {
+        const targetDate = new Date(element.getAttribute('data-target-date'))
+        function updateCountdown() {
+            const now = new Date(),
+                  difference = targetDate - now
+            if (difference <= 0) {
+                element.querySelector('.predict__info-lock-countdown').textContent = "time over"
+                clearInterval(countdownInterval)
+                return
+            }
+            const days = Math.floor(difference / (1000 * 60 * 60 * 24)),
+                  hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
+                  minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60))
+            element.querySelector('.predict__info-lock-days').textContent = days
+            element.querySelector('.predict__info-lock-hours').textContent = hours
+            element.querySelector('.predict__info-lock-minutes').textContent = minutes
+        }
+        const countdownInterval = setInterval(updateCountdown, 60000)
+        updateCountdown()
+    }
+    document.querySelectorAll('.predict__info-lock-countdown').forEach(startCountdown)
+
+    // custom horizontal scroll
+    const scrollBar = document.querySelector(".table__scrollbar"),
+          scrollBarThumb = document.querySelector(".table__scrollbar-thumb"),
+          scrollElem = document.querySelector('.table__wrap-scroll'),
+          scrollContainer = document.querySelector('.table__wrap')
+
+    let scrollBarWidth = scrollContainer.clientWidth - 50,
+        scrollBarThumbWidth;
+
+    if (scrollElem.clientWidth <= scrollContainer.clientWidth) {
+        scrollBar.style.display = "none"
+    } else {
+        scrollBar.style.display = "block"
+        scrollBarThumbWidth = (scrollBarWidth * scrollContainer.clientWidth - 50) / scrollElem.scrollWidth
+        scrollBarThumb.style.width = `${scrollBarThumbWidth}px`
+        scrollBar.style.width = `${scrollBarWidth}px`
+    }
+
+    let currentScrollDistance = 0
+
+    scrollContainer.addEventListener("scroll", () => {
+        currentScrollDistance = (scrollContainer.scrollLeft * 100) / scrollContainer.clientWidth
+        scrollBarThumb.style.left = `${(scrollBarThumbWidth / 100) * currentScrollDistance}px`
+    });
+
+// scroll anim
+    function isInViewport(element, visibilityThreshold) {
+        const rect = element.getBoundingClientRect(),
+              windowHeight = window.innerHeight || document.documentElement.clientHeight,
+              windowWidth = window.innerWidth || document.documentElement.clientWidth,
+              visibleHeight = Math.min(rect.bottom, windowHeight) - Math.max(rect.top, 0),
+              visibleWidth = Math.min(rect.right, windowWidth) - Math.max(rect.left, 0),
+              elementHeight = rect.height,
+              elementWidth = rect.width,
+              visibleArea = visibleHeight * visibleWidth,
+              totalArea = elementHeight * elementWidth,
+              visiblePercentage = visibleArea / totalArea
+        return visiblePercentage >= visibilityThreshold
+    }
+    function addClassOnVisibility(element, className, visibilityThreshold) {
+        window.addEventListener('scroll', () => {
+            if (isInViewport(element, visibilityThreshold)) {
+                element.classList.add(className)
+            }
+        });
+        document.addEventListener("DOMContentLoaded", () => {
+            if (isInViewport(element, visibilityThreshold)) {
+                element.classList.add(className)
+            }
+        })
+    }
 })
+
+
+

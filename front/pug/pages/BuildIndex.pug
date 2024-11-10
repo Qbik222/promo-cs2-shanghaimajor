@@ -93,54 +93,89 @@
                         .predict__tabs-wrap
                             .predict__tabs-text етап
                             .predict__tabs-data 10.03 - 31.03
-                .predict__stage.stage1._active
+                .predict__stage._active._done
                     .predict__top
-                        .predict__win
+                        .predict__win._lose
                             .predict__win-title 3 : 0
                             .predict__win-card.stage1
+                                .predict__win-loseText програш
+                                .predict__win-winText виграш
                                 .predict__win-icon
-                                .predict__win-team
+                                .predict__win-team Команда <br> «Faze Clan»
                                 .predict__win-btn.cards-btn
                         .predict__info
-                        .predict__lose
+                            .predict__info-open
+                                .predict__info-open-title Твій Множник
+                                .predict__info-open-num 1
+                            .predict__info-done Дивись результати етапу
+                            .predict__info-lock
+                                .predict__info-lock-title Етап почнеться через
+                                .predict__info-lock-countdown(data-target-date="2024-11-31T23:59:59")
+                                    .predict__info-lock-days
+                                    .predict__info-lock-hours
+                                    .predict__info-lock-minutes
+                                .predict__info-lock-bottom
+                                    .predict__info-lock-text дні
+                                    .predict__info-lock-text год.
+                                    .predict__info-lock-text хв.
+                            .predict__info-win
+                                .predict__info-win-title Команда <br> «GamerLegion»
+                                .predict__info-win-subtitle Переможець турніру
+                        .predict__lose._win
                             .predict__lose-title 0 : 3
                             .predict__lose-card.stage1
+                                .predict__win-loseText програш
+                                .predict__win-winText виграш
                                 .predict__lose-icon
-                                .predict__lose-team
+                                .predict__lose-team Команда <br> «Faze Clan»
                                 .predict__lose-btn.cards-btn
                     .predict__bottom
                         .predict__bottom-title Обери 7 команд, які пройдуть до наступного етапу
                         .predict__list(data-stage="stage1")
-                            .predict__list-item
+                            .predict__list-item._win
+                                .predict__list-loseText програш
+                                .predict__list-winText виграш
                                 .predict__list-item-icon
-                                .predict__list-item-team
+                                .predict__list-item-team Команда <br> «Faze Clan»
                                 .predict__list-item-btn.cards-btn
-                            .predict__list-item
+                            .predict__list-item._win
+                                .predict__list-loseText програш
+                                .predict__list-winText виграш
                                 .predict__list-item-icon
-                                .predict__list-item-team
+                                .predict__list-item-team Команда <br> «Faze Clan»
                                 .predict__list-item-btn.cards-btn
-                            .predict__list-item
+                            .predict__list-item._win
+                                .predict__list-loseText програш
+                                .predict__list-winText виграш
                                 .predict__list-item-icon
-                                .predict__list-item-team
+                                .predict__list-item-team Команда <br> «Faze Clan»
                                 .predict__list-item-btn.cards-btn
-                            .predict__list-item
+                            .predict__list-item._win
+                                .predict__list-loseText програш
+                                .predict__list-winText виграш
                                 .predict__list-item-icon
-                                .predict__list-item-team
+                                .predict__list-item-team Команда <br> «Faze Clan»
                                 .predict__list-item-btn.cards-btn
-                            .predict__list-item
+                            .predict__list-item._lose
+                                .predict__list-loseText програш
+                                .predict__list-winText виграш
                                 .predict__list-item-icon
-                                .predict__list-item-team
+                                .predict__list-item-team Команда <br> «Faze Clan»
                                 .predict__list-item-btn.cards-btn
-                            .predict__list-item
+                            .predict__list-item._lose
+                                .predict__list-loseText програш
+                                .predict__list-winText виграш
                                 .predict__list-item-icon
-                                .predict__list-item-team
+                                .predict__list-item-team Команда <br> «Faze Clan»
                                 .predict__list-item-btn.cards-btn
-                            .predict__list-item
+                            .predict__list-item._lose
+                                .predict__list-loseText програш
+                                .predict__list-winText виграш
                                 .predict__list-item-icon
-                                .predict__list-item-team
+                                .predict__list-item-team Команда <br> «Faze Clan»
                                 .predict__list-item-btn.cards-btn
 
-                .predict__stage.stage2
+                .predict__stage._open
                     .predict__top
                         .predict__win
                             .predict__win-title 3 : 0
@@ -149,6 +184,24 @@
                                 .predict__win-team
                                 .predict__win-btn.cards-btn
                         .predict__info
+                            .predict__info-open
+                                .predict__info-open-title Твій Множник
+                                .predict__info-open-num 1
+                            .predict__info-done Дивись результати етапу
+                            .predict__info-lock
+                                .predict__info-lock-title Етап почнеться через
+                                .predict__info-lock-countdown(data-target-date="2024-12-31T23:59:59")
+                                    .predict__info-lock-days
+                                    .predict__info-lock-hours
+                                    .predict__info-lock-minutes
+                                .predict__info-lock-bottom
+                                    .predict__info-lock-text дні
+                                    .predict__info-lock-text год.
+                                    .predict__info-lock-text хв.
+                            .predict__info-win
+                                .predict__info-win-title Команда <br> «GamerLegion»
+                                .predict__info-win-subtitle Переможець турніру
+
                         .predict__lose
                             .predict__lose-title 0 : 3
                             .predict__lose-card.stage2
@@ -187,134 +240,118 @@
                                 .predict__list-item-team
                                 .predict__list-item-btn.cards-btn
 
-                .predict__stage.stage3
+                .predict__stage._lock.stage3
+                    .predict__stage-title Переможець турніру
                     .predict__top
                         .predict__win
-                            .predict__win-title 3 : 0
                             .predict__win-card.stage3
                                 .predict__win-icon
-                                .predict__win-team
+                                .predict__win-team Команда <br> «GamerLegion»
                                 .predict__win-btn.cards-btn
                         .predict__info
-                        .predict__lose
-                            .predict__lose-title 0 : 3
-                            .predict__lose-card.stage3
-                                .predict__lose-icon
-                                .predict__lose-team
-                                .predict__lose-btn.cards-btn
-                    .predict__bottom
-                        .predict__bottom-title Обери 7 команд, які пройдуть до наступного етапу
-                        .predict__list(data-stage="stage3")
-                            .predict__list-item
-                                .predict__list-item-icon
-                                .predict__list-item-team
-                                .predict__list-item-btn.cards-btn
-                            .predict__list-item
-                                .predict__list-item-icon
-                                .predict__list-item-team
-                                .predict__list-item-btn.cards-btn
-                            .predict__list-item
-                                .predict__list-item-icon
-                                .predict__list-item-team
-                                .predict__list-item-btn.cards-btn
-                            .predict__list-item
-                                .predict__list-item-icon
-                                .predict__list-item-team
-                                .predict__list-item-btn.cards-btn
-                            .predict__list-item
-                                .predict__list-item-icon
-                                .predict__list-item-team
-                                .predict__list-item-btn.cards-btn
-                            .predict__list-item
-                                .predict__list-item-icon
-                                .predict__list-item-team
-                                .predict__list-item-btn.cards-btn
-                            .predict__list-item
-                                .predict__list-item-icon
-                                .predict__list-item-team
-                                .predict__list-item-btn.cards-btn
-
+                            .predict__info-open
+                                .predict__info-open-title Твій Множник
+                                .predict__info-open-num 1
+                            .predict__info-done Дивись результати етапу
+                            .predict__info-win
+                                .predict__info-win-title Команда <br> «GamerLegion»
+                                .predict__info-win-subtitle Переможець турніру
+                        .predict__info._lock
+                            .predict__info-lock
+                                .predict__info-lock-title Етап почнеться через
+                                .predict__info-lock-countdown(data-target-date="2025-01-31T23:59:59")
+                                    .predict__info-lock-days
+                                    .predict__info-lock-hours
+                                    .predict__info-lock-minutes
+                                .predict__info-lock-bottom
+                                    .predict__info-lock-text дні
+                                    .predict__info-lock-text год.
+                                    .predict__info-lock-text хв.
+            .predict__btn.btn Підтвердити прогноз
         .table
             .table__title.title Учасники
+            .table__scrollbar
+                .table__scrollbar-thumb
             .table__wrap
-                .table__head
-                    .table__head-item Місце
-                    .table__head-item ID
-                    .table__head-item множник
-                    .table__head-item бали
-                    .table__head-item Баля після множника
-                    .table__head-item приз*
-                .table__body
-                    .table__body-row
-                        .table__body-row-item 1
-                        .table__body-row-item 1234567890
-                        .table__body-row-item 45
-                        .table__body-row-item 999
-                        .table__body-row-item 99999
-                        .table__body-row-item Sennheiser G4ME ZERO
-                    .table__body-row
-                        .table__body-row-item 2
-                        .table__body-row-item 1234567890
-                        .table__body-row-item 45
-                        .table__body-row-item 999
-                        .table__body-row-item 99999
-                        .table__body-row-item Sennheiser G4ME ZERO
-                    .table__body-row
-                        .table__body-row-item 3
-                        .table__body-row-item 1234567890
-                        .table__body-row-item 45
-                        .table__body-row-item 999
-                        .table__body-row-item 99999
-                        .table__body-row-item Sennheiser G4ME ZERO
-                    .table__body-row
-                        .table__body-row-item 4
-                        .table__body-row-item 1234567890
-                        .table__body-row-item 45
-                        .table__body-row-item 999
-                        .table__body-row-item 99999
-                        .table__body-row-item Sennheiser G4ME ZERO
-                    .table__body-row
-                        .table__body-row-item 5
-                        .table__body-row-item 1234567890
-                        .table__body-row-item 45
-                        .table__body-row-item 999
-                        .table__body-row-item 99999
-                        .table__body-row-item Sennheiser G4ME ZERO
-                    .table__body-row
-                        .table__body-row-item 6
-                        .table__body-row-item 1234567890
-                        .table__body-row-item 45
-                        .table__body-row-item 999
-                        .table__body-row-item 99999
-                        .table__body-row-item Sennheiser G4ME ZERO
-                    .table__body-row
-                        .table__body-row-item 7
-                        .table__body-row-item 1234567890
-                        .table__body-row-item 45
-                        .table__body-row-item 999
-                        .table__body-row-item 99999
-                        .table__body-row-item Sennheiser G4ME ZERO
-                    .table__body-row
-                        .table__body-row-item 8
-                        .table__body-row-item 1234567890
-                        .table__body-row-item 45
-                        .table__body-row-item 999
-                        .table__body-row-item 99999
-                        .table__body-row-item Sennheiser G4ME ZERO
-                    .table__body-row
-                        .table__body-row-item 9
-                        .table__body-row-item 1234567890
-                        .table__body-row-item 45
-                        .table__body-row-item 999
-                        .table__body-row-item 99999
-                        .table__body-row-item Sennheiser G4ME ZERO
-                    .table__body-row
-                        .table__body-row-item 10
-                        .table__body-row-item 1234567890
-                        .table__body-row-item 45
-                        .table__body-row-item 999
-                        .table__body-row-item 99999
-                        .table__body-row-item Sennheiser G4ME ZERO
+                .table__wrap-scroll
+                    .table__head
+                        .table__head-item Місце
+                        .table__head-item ID
+                        .table__head-item множник
+                        .table__head-item бали
+                        .table__head-item Баля після множника
+                        .table__head-item приз*
+                    .table__body
+                        .table__body-row
+                            .table__body-row-item 1
+                            .table__body-row-item 1234567890
+                            .table__body-row-item 45
+                            .table__body-row-item 999
+                            .table__body-row-item 99999
+                            .table__body-row-item Sennheiser G4ME ZERO
+                        .table__body-row
+                            .table__body-row-item 2
+                            .table__body-row-item 1234567890
+                            .table__body-row-item 45
+                            .table__body-row-item 999
+                            .table__body-row-item 99999
+                            .table__body-row-item Sennheiser G4ME ZERO
+                        .table__body-row
+                            .table__body-row-item 3
+                            .table__body-row-item 1234567890
+                            .table__body-row-item 45
+                            .table__body-row-item 999
+                            .table__body-row-item 99999
+                            .table__body-row-item Sennheiser G4ME ZERO
+                        .table__body-row
+                            .table__body-row-item 4
+                            .table__body-row-item 1234567890
+                            .table__body-row-item 45
+                            .table__body-row-item 999
+                            .table__body-row-item 99999
+                            .table__body-row-item Sennheiser G4ME ZERO
+                        .table__body-row
+                            .table__body-row-item 5
+                            .table__body-row-item 1234567890
+                            .table__body-row-item 45
+                            .table__body-row-item 999
+                            .table__body-row-item 99999
+                            .table__body-row-item Sennheiser G4ME ZERO
+                        .table__body-row
+                            .table__body-row-item 6
+                            .table__body-row-item 1234567890
+                            .table__body-row-item 45
+                            .table__body-row-item 999
+                            .table__body-row-item 99999
+                            .table__body-row-item Sennheiser G4ME ZERO
+                        .table__body-row
+                            .table__body-row-item 7
+                            .table__body-row-item 1234567890
+                            .table__body-row-item 45
+                            .table__body-row-item 999
+                            .table__body-row-item 99999
+                            .table__body-row-item Sennheiser G4ME ZERO
+                        .table__body-row
+                            .table__body-row-item 8
+                            .table__body-row-item 1234567890
+                            .table__body-row-item 45
+                            .table__body-row-item 999
+                            .table__body-row-item 99999
+                            .table__body-row-item Sennheiser G4ME ZERO
+                        .table__body-row
+                            .table__body-row-item 9
+                            .table__body-row-item 1234567890
+                            .table__body-row-item 45
+                            .table__body-row-item 999
+                            .table__body-row-item 99999
+                            .table__body-row-item Sennheiser G4ME ZERO
+                        .table__body-row
+                            .table__body-row-item 10
+                            .table__body-row-item 1234567890
+                            .table__body-row-item 45
+                            .table__body-row-item 999
+                            .table__body-row-item 99999
+                            .table__body-row-item Sennheiser G4ME ZERO
             a(href="#").table__btn.btn взяти участь
         .drop
             details.dropdown

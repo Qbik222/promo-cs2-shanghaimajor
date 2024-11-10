@@ -3,6 +3,7 @@ $dark-blue: #00003d
 $white: #ffffff
 $magenta: #FF267E
 $green: #05C48A
+$green-hover: #05B37C
 $black: #1B1B1F
 $grey: #E3E3E3
 $second-grey: #A1A1A1
@@ -20,6 +21,47 @@ body
   img
     max-width: 100%
     height: auto
+
+.btn
+  color: $blue
+  font-size: 24px
+  font-family: $font-suisse-intl-semib
+  text-transform: uppercase
+  text-align: center
+  background: $green
+  display: inline-flex
+  align-items: center
+  justify-content: center
+  //display: none
+  width: fit-content
+  align-self: center
+  min-width: 170px
+  padding: 16px 41px 19px 41px
+  border-radius: 12px
+  position: relative
+  z-index: 5
+  transition: background .4s ease-in-out
+  &::before
+    content: ""
+    display: block
+    width: 110%
+    height: 120%
+    position: absolute
+    top: -4px
+    left: 50%
+    transform: translate(-50%, 0)
+    border: 2px solid rgba($green, .5)
+    border-radius: 12px
+    z-index: 0
+    transition: border .4s ease-in-out
+  &:hover
+    background: $green-hover
+    cursor: pointer
+    &::before
+      border: 2px solid rgba($green-hover, .5)
+      cursor: pointer
+
+
 
 body.light
   background: $dark-blue
@@ -56,8 +98,13 @@ body.light
     position: absolute
     z-index: 1
     top: 0
-    left: 0
+    left: 50%
+    transform: translate(-50%, 0)
     background: url("../img/promo/bg.png") no-repeat 50% 100%/cover
+    @media screen and (max-width: 1050px)
+      background: url("../img/promo/bg-tab.png") no-repeat 50% 100%/cover
+    @media screen and (max-width: 600px)
+      background: url("../img/promo/bg-mob.png") no-repeat 50% 100%/cover
   &::after
     content: ""
     display: block
@@ -70,6 +117,8 @@ body.light
     z-index: 0
     transform: translate(-50%, 0)
     background: url("../img/promo/bg-decor.png") no-repeat 0 0/contain
+    @media screen and (max-width: 600px)
+      background: url("../img/promo/bg-decor-mob.png") no-repeat 0 0/contain
 
 .promo
   z-index: 2
@@ -154,9 +203,14 @@ body.light
     font-size: 24px
     line-height: 24px
     text-transform: uppercase
-    padding: 32px 58px 42px 70px
+    padding: 29px 58px 45px 70px
     margin: 40px auto 0 105px
     align-self: flex-start
+    transition: background .4s ease-in-out
+    &:hover
+      background: url("../img/promo/btn-bg-hover.png") no-repeat 0 0/cover
+      background-size: 100% 100%
+      cursor: pointer
 
 .guide
   z-index: 2
@@ -215,6 +269,8 @@ body.light
         top: 0
         right: 0
         background: url("../img/guide/list-top.png") no-repeat 0 0/contain
+        @media screen and (max-width: 600px)
+          background: url("../img/guide/list-top-mob.png") no-repeat 100% 0/contain
       &-num
         min-width: 110px
         max-width: 110px
@@ -287,7 +343,6 @@ body.light
       cursor: auto
       background: linear-gradient(137deg, rgba($white, 0.1) 0%, rgba($white, 0.05) 100%)
       border-radius: 20px
-      backdrop-filter: blur(10px)
       border: 1px solid rgba($white, .1)
       &-list
         max-height: 500px
@@ -343,6 +398,24 @@ body.light
   display: flex
   flex-direction: column
   padding: 40px 0 60px 0
+  position: relative
+  &::before, &::after
+    content: ""
+    display: block
+    position: absolute
+    width: 750px
+    height: 900px
+    bottom: 0
+    background: url("../img/predict/waves.png") no-repeat 0 0/contain
+    z-index: 0
+  &::before
+    left: 0
+    transform: rotate(235deg) translate(60%, -42%)
+  &::after
+    right: 0
+    transform: rotate(-64deg) translate(51%, 49%)
+  &__btn
+    margin-top: 40px
   &__overlay
     width: 100%
     height: 100%
@@ -469,6 +542,7 @@ body.light
   &__container
     margin-top: 110px
     position: relative
+    z-index: 1
     &::before
       content: ""
       display: block
@@ -479,6 +553,24 @@ body.light
       transform: translate(-50%, 0)
       position: absolute
       background: url("../img/predict/predict-bg.png") no-repeat 0 0/contain
+    &.stage3
+      &::before
+       background: url("../img/predict/predict-bg-stage3.png") no-repeat 0 0/contain
+      .predict
+        &__top
+          justify-content: center
+          gap: 60px
+        &__win
+          &-card
+            width: 345px
+            height: 235px
+        &__stage
+          &._lock
+            .predict
+              &__top
+                margin: auto 0
+            .predict__stage-title
+              display: none
   &__tabs
     display: flex
     gap: 45px
@@ -514,6 +606,8 @@ body.light
         bottom: -17px
         left: -17px
         background: url("../img/predict/predict-decor.png") no-repeat 0 0/contain
+        @media screen and (max-width: 600px)
+          background: url("../img/predict/predict-decor-mob.png") no-repeat 0 0/contain
       &:hover
         cursor: pointer
       &._active
@@ -544,23 +638,302 @@ body.light
     display: none
     flex-direction: column
     align-items: center
+    height: 545px
+    &-title
+      color: $green
+      font-size: 48px
+      letter-spacing: .04em
+      font-family: $font-suisse-intl-bold
+      text-transform: uppercase
+      margin-top: 75px
+      z-index: 2
     &._active
       display: flex
+    &._win
+      .predict__info-win
+        display: flex
+    &._open
+      .predict__info-open
+        display: flex
+    &._done
+      .predict
+        &__win._lose, &__lose._lose
+          pointer-events: none
+          .predict
+            &__win, &__lose
+              &-loseText
+                display: block
+                margin-top: 10px
+              &-team
+                display: block
+              &-title
+                color: $magenta
+                &::before
+                  background: $magenta
+              &-btn
+                display: none
+              &-card
+                &::before
+                  background: url("../img/predict/red-top-decor.png") no-repeat 0 0/contain
+                  @media screen and (max-width: 600px)
+                    background: url("../img/predict/red-top-decor-mob.png") no-repeat 0 0/contain
+                &::after
+                  background: url("../img/predict/red-bottom-decor.png") no-repeat 0 0/contain
+              &-icon
+                background: url("../img/predict/icon-red.png") no-repeat 0 0/contain
+                width: 88px
+                height: 72px
+        &__win._win, &__lose._win
+          pointer-events: none
+          .predict
+            &__win, &__lose
+              &-team
+                display: block
+                margin-top: 10px
+              &-winText
+                display: block
+              &-title
+                color: $green
+                &::before
+                  background: $green
+              &-card
+                &::before
+                  background: url("../img/predict/green-top-decor.png") no-repeat 0 0/contain
+                  @media screen and (max-width: 600px)
+                    background: url("../img/predict/green-top-decor-mob.png") no-repeat 0 0/contain
+                &::after
+                  background: url("../img/predict/green-bottom-decor.png") no-repeat 0 0/contain
+              &-icon
+                background: url("../img/predict/icon-green.png") no-repeat 0 0/contain
+                width: 88px
+                height: 72px
+              &-btn
+                display: none
+        &__list
+          &-item._win, &-item._lose
+            padding-top: 22px
+            height: 150px
+            pointer-events: none
+            .predict
+              &__list
+                &-item
+                  &-icon
+                    margin-top: 0
+                    width: 61px
+                    height: 50px
+                  &-team
+                    display: block
+                  &-btn
+                    display: none
+          &-item._win
+            .predict
+              &__list
+                &-winText
+                  display: block
+          &-item._lose
+            .predict
+              &__list
+                &-loseText
+                  display: block
+        &__info
+          &-done
+            display: block
+    &._lock
+      .predict
+        &__win, &__lose
+          pointer-events: none
+          &-card
+            justify-content: center
+          &-icon
+            margin-bottom: 20px
+            width: 145px
+            height: 120px
+            max-width: 100%
+            max-height: 100%
+          &-btn
+            display: none
+        &__list
+          &-item
+            pointer-events: none
+            padding-top: 10px
+            &-btn
+              display: none
+        &__info
+          &-lock
+            display: flex
+            padding-bottom: 15px
+    &.stage3
+      .predict
+        &__win
+          &-icon
+            max-width: 145px
+            max-height: 120px
+          &._select
+            .predict__win-icon
+              width: 104px
+              height: 91px
+        &__info
+          &._lock
+            display: none
+    &._lock.stage3
+      .predict
+        &__win
+          display: none
+        &__info
+          &-open
+            display: flex
+          &._lock
+            display: flex
+    &._done.stage3
+      .predict
+        &__win
+          pointer-events: none
+          &-btn
+            display: none
+          &-team
+            display: block
+            font-size: 30px
+            line-height: 36px
+            margin-top: 10px
+        &__info
+          &-open
+            display: flex
+          &-done
+            display: none
   &__top
     width: 950px
     display: flex
-    margin-top: 55px
+    margin-top: 40px
     justify-content: space-between
   &__info
     width: 270px
     height: 270px
     background: url("../img/predict/info-bg.png") no-repeat 0 0/contain
+    display: flex
+    flex-direction: column
+    align-items: center
+    justify-content: center
+    &-open
+      display: none
+      flex-direction: column
+      margin: auto
+      &-title
+        color: $magenta
+        font-size: 20px
+        font-family: $font-suisse-intl-bold
+        letter-spacing: .04em
+        text-transform: uppercase
+        max-width: 150px
+        text-align: center
+      &-num
+        color: $magenta
+        font-size: 48px
+        letter-spacing: .04em
+        font-family: $font-suisse-intl-bold
+        text-transform: uppercase
+        display: inline-flex
+        align-items: center
+        justify-content: center
+        margin: 15px auto 0 auto
+        background: $dark-blue
+        border-radius: 10px
+        border: 2px solid $magenta
+        width: 107px
+        height: 60px
+        text-align: center
+        padding-left: 4px
+    &-done
+      display: none
+      margin: auto
+      color: $grey
+      max-width: 150px
+      font-size: 20px
+      letter-spacing: .04em
+      font-family: $font-suisse-intl-bold
+      text-align: center
+      text-transform: uppercase
+    &-lock
+      display: none
+      flex-direction: column
+      align-items: center
+      &-title
+        color: $grey
+        max-width: 150px
+        font-size: 20px
+        letter-spacing: .04em
+        font-family: $font-suisse-intl-bold
+        text-align: center
+        text-transform: uppercase
+      &-countdown
+        display: flex
+        align-items: center
+        width: 170px
+        justify-content: space-between
+        background: $dark-blue
+        border-radius: 10px
+        border: 2px solid $magenta
+        padding: 0 10px
+        & > *
+          color: $magenta
+          font-size: 32px
+          letter-spacing: .04em
+          font-family: $font-suisse-intl-bold
+          text-align: center
+      &-bottom
+        display: flex
+        align-items: center
+        width: 170px
+        padding: 0 16px
+        justify-content: space-between
+        & > *
+          color: $white
+          font-size: 16px
+          font-family: $font-suisse-intl-semib
+          letter-spacing: .02em
+          line-height: 30px
+          text-transform: uppercase
+
+    &-win
+      display: none
+      flex-direction: column
+      align-items: center
+      &-title
+        font-family: $font-suisse-intl-med
+        font-size: 20px
+        color: $magenta
+        line-height: 24px
+        letter-spacing: .03em
+        text-align: center
+      &-subtitle
+        margin-top: 20px
+        color: $grey
+        font-size: 20px
+        letter-spacing: .04em
+        font-family: $font-suisse-intl-bold
+        text-transform: uppercase
+        max-width: 170px
+        text-align: center
+
   &__win, &__lose
     display: flex
     flex-direction: column
     align-items: center
     &:hover
       cursor: pointer
+    &-loseText, &-winText
+      display: none
+      text-transform: uppercase
+      color: $white
+      text-align: center
+      font-size: 25px
+      transform: translate(0, -45%)
+      font-family: $font-suisse-intl-bold
+      padding: 2px 20px
+      clip-path: polygon(0% 100%, 9.24% 0%, 100% 0%, 90.6% 100%)
+    &-loseText
+      background: $magenta
+    &-winText
+      background: $green
     &-icon
       background: url("../img/predict/icon-green.png") no-repeat 0 0/contain
       width: 100%
@@ -632,6 +1005,10 @@ body.light
     &._select
       .predict
         &__win, &__lose
+          &-title
+            color: $magenta
+            &::before
+              background: $magenta
           &-card
             &::before
               background: url("../img/predict/red-top-decor.png") no-repeat 0 0/contain
@@ -652,9 +1029,8 @@ body.light
               cursor: pointer
               opacity: .8
 
-
   &__bottom
-    margin-top: 60px
+    margin-top: 45px
     &-title
       color: $magenta
       font-size: 20px
@@ -732,8 +1108,22 @@ body.light
                 //pointer-events: initial
                 &:hover
                   opacity: .8
-
-
+    &-winText, &-loseText
+      display: none
+      text-transform: uppercase
+      text-align: center
+      color: $white
+      font-size: 16px
+      transform: translate(0, -45%)
+      font-family: $font-suisse-intl-bold
+      padding: 2px 15px
+      clip-path: polygon(0% 100%, 9.24% 0%, 100% 0%, 90.6% 100%)
+      width: fit-content
+      margin: 0 auto
+    &-loseText
+      background: $magenta
+    &-winText
+      background: $green
   &__title
     &::before, &::after
       content: ""
@@ -765,6 +1155,7 @@ body.light
   width: 100%
   display: flex
   flex-direction: column
+  padding-bottom: 100px
   &::before, &::after
     display: block
     max-width: 1150px
@@ -779,9 +1170,27 @@ body.light
     order: 4
     height: 190px
     background: url("../img/table/table-bottom.png") no-repeat 0 0/contain
-    margin-top: -140px
+    margin-top: -200px
   &__title
     order: 1
+    &::before, &::after
+      content: ""
+      display: block
+      position: absolute
+      background: url("../img/green-decor.png") no-repeat 0 0/contain
+    &::before
+      left: -30px
+      top: 160px
+      width: 202px
+      height: 202px
+      transform: translate(-100%, 0)
+    &::after
+      right: -30px
+      top: 200px
+      width: 230px
+      height: 230px
+      transform: translate(100%, 0)
+
   &__head
     display: flex
     width: 100%
@@ -813,6 +1222,11 @@ body.light
     max-width: 960px
     margin: 0 auto
     order: 3
+    &-scroll
+      display: inherit
+      flex-direction: inherit
+      align-items: inherit
+      width: 100%
     &::after
       content: ""
       display: block
@@ -823,6 +1237,10 @@ body.light
       height: 9px
       max-width: 905px
       margin-top: 12px
+    &::-webkit-scrollbar-thumb
+      background: transparent
+    &::-webkit-scrollbar
+      background: transparent
   &__body
     max-width: 905px
     margin: 12px auto 0 auto
@@ -830,6 +1248,24 @@ body.light
     padding-left: 5px
     border-top: 1px solid rgba(5, 196, 138, 0.20)
     border-bottom: 1px solid rgba(5, 196, 138, 0.20)
+    position: relative
+    &::before, &::after
+      content: ""
+      display: block
+      position: absolute
+      background: url("../img/green-decor.png") no-repeat 0 0/contain
+    &::before
+      left: -110px
+      bottom: -170px
+      width: 157px
+      height: 157px
+      transform: translate(-100%, 0)
+    &::after
+      right: -90px
+      bottom: -230px
+      width: 227px
+      height: 227px
+      transform: translate(100%, 0)
     &-row
       display: flex
       width: 100%
@@ -858,3 +1294,30 @@ body.light
           text-align: left
   &__btn
     order: 4
+    transform: translate(0 , 100%)
+  &__scrollbar
+    height: 6px
+    background: rgba($green, .2)
+    position: absolute
+    bottom: 140px
+    left: 50%
+    transform: translateX(-50%)
+    z-index: 2
+    &-thumb
+      background: $green
+      height: 8px
+      position: absolute
+      top: 50%
+      transform: translateY(-50%)
+      border-radius: 5px
+      &::before
+        content: ""
+        position: absolute
+        top: 50%
+        left: 50%
+        transform: translate(-50%, -50%)
+        background: url("../img/table/scroll-decor.png") no-repeat 0 0/contain
+        height: 6px
+        width: 12px
+
+
