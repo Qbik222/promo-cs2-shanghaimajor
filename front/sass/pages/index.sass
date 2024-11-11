@@ -91,6 +91,7 @@ body.light
   background: $dark-blue
   overflow: hidden
   position: relative
+  padding-bottom: 20px
 .container
   display: inherit
   flex-direction: inherit
@@ -1391,9 +1392,21 @@ body.dark
       @media screen and (max-width: 600px)
         background: url("../img/predict/predict-bg-mob-dark.png") no-repeat 0 0/contain
     &__info
+      &-open
+        &-num
+          background: $black
+      &-lock
+        &-countdown
+          background: $black
       &-bg
         &::before
           background: url("../img/predict/info-bg-green-dark.png") no-repeat 0 0/contain
+  .guide
+    &__list
+      &-item
+        &-num
+          color: $black
+
   .table
     &::before
       background: url("../img/table/table-top-dark.png") no-repeat 0 0/contain
