@@ -53,10 +53,12 @@ document.addEventListener("DOMContentLoaded", ()=>{
         popups.forEach(popup => popup.classList.remove("_active"));
         overlay.classList.add("_active");
         popups[index].classList.add("_active");
+        document.body.style.overflow = "hidden"
         const closeBtn = popups[index].querySelector(".predict__teams-close");
         closeBtn.addEventListener("click", () => {
             overlay.classList.remove("_active");
             popups[index].classList.remove("_active");
+            document.body.style.overflow = "auto"
         }, { once: true });
     }
 
@@ -113,6 +115,7 @@ document.addEventListener("DOMContentLoaded", ()=>{
                             cardsText[i].innerHTML = `Команда <br> ${teamName}`;
                             overlay.classList.remove("_active");
                             popups.forEach(popup => popup.classList.remove("_active"));
+                            document.body.style.overflow = "auto"
                         }
                     });
                 });
@@ -139,6 +142,7 @@ document.addEventListener("DOMContentLoaded", ()=>{
                                 teamTextBlock.innerHTML = `Команда <br> ${teamName}`;
                                 overlay.classList.remove("_active");
                                 popups.forEach(popup => popup.classList.remove("_active"));
+                                document.body.style.overflow = "auto"
 
                             }
                         });
@@ -249,35 +253,40 @@ document.addEventListener("DOMContentLoaded", ()=>{
 
     scrollContainer.addEventListener("scroll", () => {
         currentScrollDistance = (scrollContainer.scrollLeft * 100) / scrollContainer.clientWidth
-        scrollBarThumb.style.left = `${(scrollBarThumbWidth / 100) * currentScrollDistance}px`
+        scrollBarThumb.style.left = `${(scrollBarThumbWidth / 100) * currentScrollDistance - 5}px`
     });
 
-// scroll anim
-    function isInViewport(element, visibilityThreshold) {
-        const rect = element.getBoundingClientRect(),
-              windowHeight = window.innerHeight || document.documentElement.clientHeight,
-              windowWidth = window.innerWidth || document.documentElement.clientWidth,
-              visibleHeight = Math.min(rect.bottom, windowHeight) - Math.max(rect.top, 0),
-              visibleWidth = Math.min(rect.right, windowWidth) - Math.max(rect.left, 0),
-              elementHeight = rect.height,
-              elementWidth = rect.width,
-              visibleArea = visibleHeight * visibleWidth,
-              totalArea = elementHeight * elementWidth,
-              visiblePercentage = visibleArea / totalArea
-        return visiblePercentage >= visibilityThreshold
-    }
-    function addClassOnVisibility(element, className, visibilityThreshold) {
-        window.addEventListener('scroll', () => {
-            if (isInViewport(element, visibilityThreshold)) {
-                element.classList.add(className)
-            }
-        });
-        document.addEventListener("DOMContentLoaded", () => {
-            if (isInViewport(element, visibilityThreshold)) {
-                element.classList.add(className)
-            }
-        })
-    }
+// // scroll anim
+//     function isInViewport(element, visibilityThreshold) {
+//         const rect = element.getBoundingClientRect(),
+//               windowHeight = window.innerHeight || document.documentElement.clientHeight,
+//               windowWidth = window.innerWidth || document.documentElement.clientWidth,
+//               visibleHeight = Math.min(rect.bottom, windowHeight) - Math.max(rect.top, 0),
+//               visibleWidth = Math.min(rect.right, windowWidth) - Math.max(rect.left, 0),
+//               elementHeight = rect.height,
+//               elementWidth = rect.width,
+//               visibleArea = visibleHeight * visibleWidth,
+//               totalArea = elementHeight * elementWidth,
+//               visiblePercentage = visibleArea / totalArea
+//         return visiblePercentage >= visibilityThreshold
+//     }
+//     function addClassOnVisibility(element, className, visibilityThreshold) {
+//         window.addEventListener('scroll', () => {
+//             if (isInViewport(element, visibilityThreshold)) {
+//                 element.classList.add(className)
+//             }
+//         });
+//         document.addEventListener("DOMContentLoaded", () => {
+//             if (isInViewport(element, visibilityThreshold)) {
+//                 element.classList.add(className)
+//             }
+//         })
+//     }
+
+    document.querySelector(".dark-btn").addEventListener("click", () =>{
+        document.body.classList.toggle("dark")
+    })
+
 })
 
 

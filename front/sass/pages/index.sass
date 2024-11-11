@@ -4,7 +4,7 @@ $white: #ffffff
 $magenta: #FF267E
 $green: #05C48A
 $green-hover: #05B37C
-$black: #1B1B1F
+$black: #111218
 $grey: #E3E3E3
 $second-grey: #A1A1A1
 
@@ -21,6 +21,17 @@ body
   img
     max-width: 100%
     height: auto
+
+.hide
+  display: none!important
+
+.dark-btn
+  position: fixed
+  top: 0
+  left: 0
+  z-index: 20
+  width: 50px
+  height: 20px
 
 .btn
   color: $blue
@@ -60,8 +71,6 @@ body
     &::before
       border: 2px solid rgba($green-hover, .5)
       cursor: pointer
-
-
 
 body.light
   background: $dark-blue
@@ -148,7 +157,7 @@ body.light
       display: flex
       align-items: center
       padding-left: 15px
-      &-item
+      span
         color: $grey
         font-size: 82px
         line-height: 82px
@@ -243,6 +252,25 @@ body.light
     margin-top: 45px
     max-width: 1150px
     width: 100%
+    position: relative
+    &::before, &::after
+      content: ""
+      display: block
+      position: absolute
+      background: url("../img/magenta-decor.png") no-repeat 0 0/contain
+      pointer-events: none
+    &::before
+      width: 157px
+      height: 157px
+      left: 0
+      bottom: 0
+      transform: translate(130%, 125%)
+    &::after
+      width: 227px
+      height: 227px
+      right: 0
+      bottom: 0
+      transform: translate(-35%, 135%)
     &-item
       width: 350px
       height: 150px
@@ -292,6 +320,7 @@ body.light
   margin: auto
   width: 100%
   padding: 50px 10px 0 10px
+  z-index: 3
   .dropdown
     outline: none!important
     cursor: pointer
@@ -334,7 +363,6 @@ body.light
       summary
         &:after
           transform: rotate(180deg)
-          //opacity: .6
     .drop-txt
       margin-top: 5px
       overflow-wrap: break-word
@@ -342,7 +370,7 @@ body.light
       text-align: start
       cursor: auto
       background: linear-gradient(137deg, rgba($white, 0.1) 0%, rgba($white, 0.05) 100%)
-      border-radius: 20px
+      border-radius: 10px
       border: 1px solid rgba($white, .1)
       &-list
         max-height: 500px
@@ -361,9 +389,12 @@ body.light
         margin-bottom: 10px
         font-family: $roboto-cond-reg
         display: block
-        font-size: 14px
-        line-height: 22px
+        font-size: 16px
+        line-height: 26px
         color: $grey
+        @media screen and (max-width: 600px)
+          font-size: 13px
+          line-height: 20px
         &:last-child
           margin-bottom: 0
         a
@@ -399,6 +430,7 @@ body.light
   flex-direction: column
   padding: 40px 0 60px 0
   position: relative
+  z-index: 5
   &::before, &::after
     content: ""
     display: block
@@ -422,7 +454,7 @@ body.light
     position: fixed
     top: 0
     left: 0
-    z-index: 10
+    z-index: 11
     background: rgba(#01013E, .8)
     display: none
     &._active
@@ -892,7 +924,6 @@ body.light
           letter-spacing: .02em
           line-height: 30px
           text-transform: uppercase
-
     &-win
       display: none
       flex-direction: column
@@ -913,7 +944,6 @@ body.light
         text-transform: uppercase
         max-width: 170px
         text-align: center
-
   &__win, &__lose
     display: flex
     flex-direction: column
@@ -1028,7 +1058,6 @@ body.light
             &:hover
               cursor: pointer
               opacity: .8
-
   &__bottom
     margin-top: 45px
     &-title
@@ -1070,7 +1099,6 @@ body.light
         margin: auto auto 0 auto
         transform: translate(0, 50%)
         background: url("../img/predict/plus.png") no-repeat 0 0/contain
-        //pointer-events: none
         cursor: pointer
       &-icon
         width: 81px
@@ -1105,7 +1133,6 @@ body.light
                 min-width: 43px
                 min-height: 43px
                 transition: opacity .4s ease-in-out
-                //pointer-events: initial
                 &:hover
                   opacity: .8
     &-winText, &-loseText
@@ -1124,24 +1151,6 @@ body.light
       background: $magenta
     &-winText
       background: $green
-  &__title
-    &::before, &::after
-      content: ""
-      display: block
-      position: absolute
-      background: url("../img/magenta-decor.png") no-repeat 0 0/contain
-    &::before
-      width: 157px
-      height: 157px
-      left: 0
-      top: 0
-      transform: translate(130%, -95%)
-    &::after
-      width: 227px
-      height: 227px
-      right: 0
-      top: 0
-      transform: translate(-30%, -40%)
   &__subtitle
     z-index: 1
     position: relative
@@ -1190,7 +1199,6 @@ body.light
       width: 230px
       height: 230px
       transform: translate(100%, 0)
-
   &__head
     display: flex
     width: 100%
@@ -1299,7 +1307,7 @@ body.light
     height: 6px
     background: rgba($green, .2)
     position: absolute
-    bottom: 140px
+    bottom: 75px
     left: 50%
     transform: translateX(-50%)
     z-index: 2
@@ -1319,5 +1327,46 @@ body.light
         background: url("../img/table/scroll-decor.png") no-repeat 0 0/contain
         height: 6px
         width: 12px
+// dark theme
 
-
+body.dark
+  background: $black
+  .container
+    &::before
+      background: url("../img/promo/bg-dark.png") no-repeat 50% 100%/cover
+      @media screen and (max-width: 1050px)
+        background: url("../img/promo/bg-tab-dark.png") no-repeat 50% 100%/cover
+      @media screen and (max-width: 600px)
+        background: url("../img/promo/bg-mob-dark.png") no-repeat 50% 100%/cover
+    &::after
+      background: url("../img/promo/bg-decor-dark.png") no-repeat 0 0/contain
+      @media screen and (max-width: 600px)
+        background: url("../img/promo/bg-decor-mob-dark.png") no-repeat 0 0/contain
+        z-index: 1
+  .fav-page
+    background: $black
+  .predict
+    &__container
+      &.stage3
+         &::before
+           background: url("../img/predict/predict-bg-stage3-dark.png") no-repeat 0 0/contain
+         @media screen and (max-width: 600px)
+          background: url("../img/predict/predict-bg-mob-stage3-dark.png") no-repeat 0 0/contain
+      &.stage3._open
+        @media screen and (max-width: 600px)
+          background: url("../img/predict/predict-bg-stage3-open-mob-dark.png") no-repeat 0 0/contain
+      &::before
+        background: url("../img/predict/predict-bg-dark.png") no-repeat 0 0/contain
+      @media screen and (max-width: 600px)
+        background: url("../img/predict/predict-bg-mob-dark.png") no-repeat 0 0/contain
+    &__info
+      background: url("../img/predict/info-bg-dark.png") no-repeat 0 0/contain
+  .table
+    &::before
+      background: url("../img/table/table-top-dark.png") no-repeat 0 0/contain
+    &::after
+      background: url("../img/table/table-bottom-dark.png") no-repeat 0 0/contain
+    &__wrap
+      @media screen and (max-width: 600px)
+        background: url("../img/table/table-bg-mob-dark.png") no-repeat 0 0/contain
+        background-size: 100vw 100%
