@@ -255,33 +255,64 @@ document.addEventListener("DOMContentLoaded", ()=>{
         currentScrollDistance = (scrollContainer.scrollLeft * 100) / scrollContainer.clientWidth
         scrollBarThumb.style.left = `${(scrollBarThumbWidth / 100) * currentScrollDistance - 5}px`
     });
+// typewright text anim
+    function dynamicTypewriter(element, speed, callback) {
+        const textArray = element.textContent.trim().split(' ');
+        const litArr = textArray.join(' ').split(/(\s+)/).filter(function (_char) {
+            return _char.trim() !== '' || _char === ' ';
+        });
+        let wordIndex = 0;
+        let charIndex = 0;
+        let currentText = '';
 
-// // scroll anim
-//     function isInViewport(element, visibilityThreshold) {
-//         const rect = element.getBoundingClientRect(),
-//               windowHeight = window.innerHeight || document.documentElement.clientHeight,
-//               windowWidth = window.innerWidth || document.documentElement.clientWidth,
-//               visibleHeight = Math.min(rect.bottom, windowHeight) - Math.max(rect.top, 0),
-//               visibleWidth = Math.min(rect.right, windowWidth) - Math.max(rect.left, 0),
-//               elementHeight = rect.height,
-//               elementWidth = rect.width,
-//               visibleArea = visibleHeight * visibleWidth,
-//               totalArea = elementHeight * elementWidth,
-//               visiblePercentage = visibleArea / totalArea
-//         return visiblePercentage >= visibilityThreshold
-//     }
-//     function addClassOnVisibility(element, className, visibilityThreshold) {
-//         window.addEventListener('scroll', () => {
-//             if (isInViewport(element, visibilityThreshold)) {
-//                 element.classList.add(className)
-//             }
-//         });
-//         document.addEventListener("DOMContentLoaded", () => {
-//             if (isInViewport(element, visibilityThreshold)) {
-//                 element.classList.add(className)
-//             }
-//         })
-//     }
+        element.classList.add("_opacity")
+
+        function typeWord() {
+            if (wordIndex === litArr.length) {
+                element.classList.remove('typewriter-cursor');
+                return;
+            }
+            const currentWord = textArray[wordIndex];
+
+            if(currentWord === undefined) return
+
+            if (charIndex < currentWord.length) {
+                currentText += currentWord.charAt(charIndex);
+                element.innerText = currentText;
+                charIndex++;
+                setTimeout(typeWord, speed);
+            } else {
+                currentText += ' ';
+                element.innerText = currentText;
+                charIndex = 0;
+                wordIndex++;
+                setTimeout(typeWord, speed);
+            }
+        }
+        element.classList.add('typewriter-cursor');
+        typeWord();
+    }
+
+    function observeElements(typeElems) {
+        const options = {
+            root: null,
+            threshold: 0.5
+        };
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach((entry, i) => {
+                if (entry.isIntersecting) {
+                    dynamicTypewriter(entry.target, 35, () => {});
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, options);
+        typeElems.forEach(item => {
+            observer.observe(item);
+        });
+    }
+    const typeAnim = document.querySelectorAll('.type-anim');
+    observeElements(typeAnim);
+
 
     document.querySelector(".dark-btn").addEventListener("click", () =>{
         document.body.classList.toggle("dark")

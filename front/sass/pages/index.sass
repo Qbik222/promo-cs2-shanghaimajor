@@ -138,6 +138,7 @@ body.light
     content: ""
     display: block
     width: 100%
+    animation: fadeIn 1.2s ease-in-out
   &::before
     height: 190px
     background: url("../img/promo/top-decor.png") no-repeat 0 0/contain
@@ -171,6 +172,8 @@ body.light
           background: url("../img/promo/title-aim.png") no-repeat 0 0/contain
           margin: 0 -0.1em
           z-index: 2
+          transform: translate(0, 0)
+          animation: aimAnim 4s linear infinite
     &-bottom
       display: flex
       align-items: center
@@ -197,12 +200,14 @@ body.light
       font-family: $ibm-plex-bold
       font-size: 40px
       text-transform: uppercase
+      animation: fadeInTextPromo 1.7s ease-in-out
     &-bottom
       margin-top: 90px
       font-family: $roboto-cond-reg
       font-size: 10px
       color: $second-grey
       max-width: 480px
+      animation: fadeInTextPromo 2s ease-in-out
   &__btn
     display: inline-block
     background: url("../img/promo/btn-bg.png") no-repeat 0 0/cover
@@ -1160,6 +1165,8 @@ body.light
     text-align: center
     padding: 0 45px
     margin-top: 20px
+    br
+      display: none
 .table
   width: 100%
   display: flex
@@ -1370,3 +1377,32 @@ body.dark
       @media screen and (max-width: 600px)
         background: url("../img/table/table-bg-mob-dark.png") no-repeat 0 0/contain
         background-size: 100vw 100%
+
+@keyframes aimAnim
+  0%, 100%
+    transform: translate(0, 0)
+  20%
+    transform: translate(6px, 10px)
+  40%
+      transform: translate(-15px, 12px)
+  60%
+      transform: translate(-7px, -19px)
+  80%
+      transform: translate(7px, 10px)
+
+@keyframes fadeIn
+  0%
+    clip-path: polygon(50% 0, 50% 0, 50% 100%, 50% 100%)
+  100%
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%)
+
+@keyframes fadeInTextPromo
+  0%
+    opacity: 0
+    transform: translateX(-20px)
+  50%
+    opacity: 0
+    transform: translateX(-20px)
+  100%
+    opacity: 1
+    transform: translateX(0)
