@@ -845,11 +845,35 @@ body.light
   &__info
     width: 270px
     height: 270px
-    background: url("../img/predict/info-bg.png") no-repeat 0 0/contain
+    //background: url("../img/predict/info-bg.png") no-repeat 0 0/contain
     display: flex
     flex-direction: column
     align-items: center
     justify-content: center
+    position: relative
+    &-bg
+      width: 100%
+      height: 100%
+      position: absolute
+      z-index: -1
+      &::before, &::after
+        content: ""
+        display: block
+        z-index: -1
+        position: absolute
+      &::before
+        background: url("../img/predict/info-bg-green.png") no-repeat 0 0/contain
+        width: 90%
+        height: 90%
+        left: 5%
+        top: 5%
+        animation: rotateToRight 15s linear infinite
+      &::after
+        background: url("../img/predict/info-bg-red.png") no-repeat 0 0/contain
+        width: 100%
+        height: 100%
+        animation: rotateToLeft 15s linear infinite
+
     &-open
       display: none
       flex-direction: column
@@ -1367,7 +1391,9 @@ body.dark
       @media screen and (max-width: 600px)
         background: url("../img/predict/predict-bg-mob-dark.png") no-repeat 0 0/contain
     &__info
-      background: url("../img/predict/info-bg-dark.png") no-repeat 0 0/contain
+      &-bg
+        &::before
+          background: url("../img/predict/info-bg-green-dark.png") no-repeat 0 0/contain
   .table
     &::before
       background: url("../img/table/table-top-dark.png") no-repeat 0 0/contain
@@ -1406,3 +1432,15 @@ body.dark
   100%
     opacity: 1
     transform: translateX(0)
+
+@keyframes rotateToRight
+  0%
+    transform: rotate(0deg)
+  100%
+    transform: rotate(360deg)
+
+@keyframes rotateToLeft
+  0%
+    transform: rotate(0deg)
+  100%
+    transform: rotate(-360deg)

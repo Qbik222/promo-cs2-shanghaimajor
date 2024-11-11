@@ -318,6 +318,12 @@ document.addEventListener("DOMContentLoaded", ()=>{
         document.body.classList.toggle("dark")
     })
 
+    let arr = {a : 1, b : 2,  c: 3, g : 4}
+
+    for (const item in arr){
+        console.log(arr[item])
+    }
+
 })
 
 
