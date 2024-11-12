@@ -1,4 +1,7 @@
 document.addEventListener("DOMContentLoaded", ()=>{
+
+    window.addEventListener('orientationchange', () => window.location.reload());
+
     const stageTabs = document.querySelectorAll(".predict__tabs-item"),
           stageWraps = document.querySelectorAll(".predict__stage"),
           loseCards = document.querySelectorAll(".predict__lose-card"),
