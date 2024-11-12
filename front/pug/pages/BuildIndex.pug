@@ -1,4 +1,7 @@
 button.dark-btn dark
+button.stageBtn stage1
+button.stageBtn2 stage2
+button.stageBtn3 stage3
 .fav-page
     .container
         .promo
@@ -67,7 +70,7 @@ button.dark-btn dark
                         .predict__tabs-wrap
                             .predict__tabs-text(data-translate="predictStage") етап
                             .predict__tabs-data(data-translate="predictStageDate3") 10.03 - 31.03
-                .predict__stage._active._done
+                .predict__stage._active._done.stage1
                     .predict__top
                         .predict__win._lose
                             .predict__win-title(data-translate="predictWinTitle") 3 : 0
@@ -149,13 +152,15 @@ button.dark-btn dark
                                 .predict__list-item-icon
                                 .predict__list-item-team Команда <br> «Faze Clan»
                                 .predict__list-item-btn.cards-btn
-                .predict__stage._open
+                .predict__stage._open.stage2
                     .predict__top
-                        .predict__win
+                        .predict__win._lose
                             .predict__win-title(data-translate="predictWinTitle") 3 : 0
                             .predict__win-card.stage2
+                                .predict__win-loseText програш
+                                .predict__win-winText виграш
                                 .predict__win-icon
-                                .predict__win-team
+                                .predict__win-team Команда <br> «GamerLegion»
                                 .predict__win-btn.cards-btn
                         .predict__info
                             .predict__info-bg
@@ -176,56 +181,58 @@ button.dark-btn dark
                             .predict__info-win
                                 .predict__info-win-title Команда <br> «GamerLegion»
                                 .predict__info-win-subtitle(data-translate="predictStage3Title") Переможець турніру
-                        .predict__lose
+                        .predict__lose._win
                             .predict__lose-title(data-translate="predictLoseTitle") 0 : 3
                             .predict__lose-card.stage2
+                                .predict__win-loseText програш
+                                .predict__win-winText виграш
                                 .predict__lose-icon
-                                .predict__lose-team
+                                .predict__lose-team Команда <br> «GamerLegion»
                                 .predict__lose-btn.cards-btn
                     .predict__bottom
                         .predict__bottom-title(data-translate="predictBottomTitle") Обери 7 команд, які пройдуть до наступного етапу
                         .predict__list(data-stage="stage2")
-                            .predict__list-item
+                            .predict__list-item._win
                                 .predict__list-loseText(data-translate="predictLoseText") програш
                                 .predict__list-winText(data-translate="predictWinText") виграш
                                 .predict__list-item-icon
-                                .predict__list-item-team
+                                .predict__list-item-team Команда <br> «GamerLegion»
                                 .predict__list-item-btn.cards-btn
-                            .predict__list-item
+                            .predict__list-item._win
                                 .predict__list-loseText(data-translate="predictLoseText") програш
                                 .predict__list-winText(data-translate="predictWinText") виграш
                                 .predict__list-item-icon
-                                .predict__list-item-team
+                                .predict__list-item-team Команда <br> «GamerLegion»
                                 .predict__list-item-btn.cards-btn
-                            .predict__list-item
+                            .predict__list-item._win
                                 .predict__list-loseText(data-translate="predictLoseText") програш
                                 .predict__list-winText(data-translate="predictWinText") виграш
                                 .predict__list-item-icon
-                                .predict__list-item-team
+                                .predict__list-item-team Команда <br> «GamerLegion»
                                 .predict__list-item-btn.cards-btn
-                            .predict__list-item
+                            .predict__list-item._lose
                                 .predict__list-loseText(data-translate="predictLoseText") програш
                                 .predict__list-winText(data-translate="predictWinText") виграш
                                 .predict__list-item-icon
-                                .predict__list-item-team
+                                .predict__list-item-team Команда <br> «GamerLegion»
                                 .predict__list-item-btn.cards-btn
-                            .predict__list-item
+                            .predict__list-item._lose
                                 .predict__list-loseText(data-translate="predictLoseText") програш
                                 .predict__list-winText(data-translate="predictWinText") виграш
                                 .predict__list-item-icon
-                                .predict__list-item-team
+                                .predict__list-item-team Команда <br> «GamerLegion»
                                 .predict__list-item-btn.cards-btn
-                            .predict__list-item
+                            .predict__list-item._lose
                                 .predict__list-loseText(data-translate="predictLoseText") програш
                                 .predict__list-winText(data-translate="predictWinText") виграш
                                 .predict__list-item-icon
-                                .predict__list-item-team
+                                .predict__list-item-team Команда <br> «GamerLegion»
                                 .predict__list-item-btn.cards-btn
-                            .predict__list-item
+                            .predict__list-item._lose
                                 .predict__list-loseText(data-translate="predictLoseText") програш
                                 .predict__list-winText(data-translate="predictWinText") виграш
                                 .predict__list-item-icon
-                                .predict__list-item-team
+                                .predict__list-item-team Команда <br> «GamerLegion»
                                 .predict__list-item-btn.cards-btn
                 .predict__stage._lock.stage3
                     .predict__stage-title(data-translate="predictStage3Title") Переможець турніру

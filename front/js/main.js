@@ -313,16 +313,57 @@ document.addEventListener("DOMContentLoaded", ()=>{
     const typeAnim = document.querySelectorAll('.type-anim');
     observeElements(typeAnim);
 
+// for test
+    function changeStage(stageBlocks, btn) {
+        let stage = 0;
+        stageBlocks = document.querySelectorAll(`${stageBlocks}`);
+
+        btn.addEventListener("click", () => { // Додаємо один слухач події до кнопки
+            stageBlocks.forEach(block => {
+                let container = block.parentElement;
+                container.querySelectorAll(".predict__win").forEach(item =>{
+                    item.classList.remove("_select")
+                })
+
+                // Перевірка на клас _open
+                if (block.classList.contains("_open")) {
+                    block.classList.remove("_open");
+                    block.classList.add("_done");
+
+                }
+                // Перевірка на клас _done
+                else if (block.classList.contains("_done")) {
+                    container.classList.remove("_open");
+                    block.classList.remove("_done");
+                    block.classList.add("_lock");
+                }
+                // Перевірка на клас _lock
+                else if (block.classList.contains("_lock")) {
+                    block.classList.remove("_lock");
+                    block.classList.add("_open");
+                    container.classList.remove("_open");
+                }
+
+                // Обробка блоку з класом stage3
+                if (block.classList.contains("stage3") && block.classList.contains("_done") ) {
+                    container.classList.add("_open");
+                }
+                if (block.classList.contains("stage3") && block.classList.contains("_open") ) {
+                    container.classList.add("_open");
+                    // console.log(container.querySelectorAll(".predict__win")[2]);
+                }
+            });
+        });
+    }
+
+    changeStage(".predict__stage.stage1", document.querySelector('.stageBtn'));
+    changeStage(".predict__stage.stage2", document.querySelector('.stageBtn2'));
+    changeStage(".predict__stage.stage3", document.querySelector('.stageBtn3'));
+
 
     document.querySelector(".dark-btn").addEventListener("click", () =>{
         document.body.classList.toggle("dark")
     })
-
-    let arr = {a : 1, b : 2,  c: 3, g : 4}
-
-    for (const item in arr){
-        console.log(arr[item])
-    }
 
 })
 

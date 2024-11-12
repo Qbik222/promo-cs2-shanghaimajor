@@ -25,13 +25,20 @@ body
 .hide
   display: none!important
 
-.dark-btn
+.dark-btn, .stageBtn, .stageBtn2, .stageBtn3
   position: fixed
   top: 0
   left: 0
   z-index: 20
   width: 50px
   height: 20px
+
+.stageBtn
+  top: 22px
+.stageBtn2
+  top: 44px
+.stageBtn3
+  top: 66px
 
 .btn
   color: $blue
@@ -242,15 +249,15 @@ body.light
     &::before
       width: 202px
       height: 202px
-      left: 0
+      left: -202px
       top: 0
-      transform: translate(-100%, 0)
+      animation: rotateReverse 4s linear infinite
     &::after
       width: 233px
       height: 233px
-      right: 0
+      right: -233px
       top: 30px
-      transform: translate(100%, 0)
+      animation: rotate 4.4s linear infinite
   &__list
     display: flex
     align-items: center
@@ -268,15 +275,15 @@ body.light
     &::before
       width: 157px
       height: 157px
-      left: 0
-      bottom: 0
-      transform: translate(130%, 125%)
+      left: 204px
+      bottom: -196px
+      animation: rotate 4.7s linear infinite
     &::after
       width: 227px
       height: 227px
-      right: 0
-      bottom: 0
-      transform: translate(-35%, 135%)
+      right: 50px
+      bottom: -290px
+      animation: rotateReverse 3.9s linear infinite
     &-item
       width: 350px
       height: 150px
@@ -721,6 +728,7 @@ body.light
                 background: url("../img/predict/icon-red.png") no-repeat 0 0/contain
                 width: 88px
                 height: 72px
+                margin-bottom: 0
         &__win._win, &__lose._win
           pointer-events: none
           .predict
@@ -745,6 +753,7 @@ body.light
                 background: url("../img/predict/icon-green.png") no-repeat 0 0/contain
                 width: 88px
                 height: 72px
+                margin-bottom: 0
               &-btn
                 display: none
         &__list
@@ -776,7 +785,7 @@ body.light
         &__info
           &-done
             display: block
-    &._lock
+    &._lock, &._done
       .predict
         &__win, &__lose
           pointer-events: none
@@ -796,6 +805,8 @@ body.light
             padding-top: 10px
             &-btn
               display: none
+    &._lock
+      .predict
         &__info
           &-lock
             display: flex
@@ -833,6 +844,13 @@ body.light
             font-size: 30px
             line-height: 36px
             margin-top: 10px
+          &-icon
+            background: url("../img/predict/icon-green.png") no-repeat 0 0/contain
+          &-card
+            &::before
+              background: url("../img/predict/green-top-decor.png") no-repeat 0 0/contain
+            &::after
+              background: url("../img/predict/green-bottom-decor.png") no-repeat 0 0/contain
         &__info
           &-open
             display: flex
@@ -1220,17 +1238,17 @@ body.light
       position: absolute
       background: url("../img/green-decor.png") no-repeat 0 0/contain
     &::before
-      left: -30px
+      left: -230px
       top: 160px
       width: 202px
       height: 202px
-      transform: translate(-100%, 0)
+      animation: rotateReverse 3.5s linear infinite
     &::after
-      right: -30px
-      top: 200px
+      right: -260px
+      top: 190px
       width: 230px
       height: 230px
-      transform: translate(100%, 0)
+      animation: rotate 4.6s linear infinite
   &__head
     display: flex
     width: 100%
@@ -1295,17 +1313,17 @@ body.light
       position: absolute
       background: url("../img/green-decor.png") no-repeat 0 0/contain
     &::before
-      left: -110px
+      left: -280px
       bottom: -170px
       width: 157px
       height: 157px
-      transform: translate(-100%, 0)
+      animation: rotate 3.9s linear infinite
     &::after
-      right: -90px
+      right: -320px
       bottom: -230px
       width: 227px
       height: 227px
-      transform: translate(100%, 0)
+      animation: rotateReverse 4.2s linear infinite
     &-row
       display: flex
       width: 100%
@@ -1457,3 +1475,27 @@ body.dark
     transform: rotate(0deg)
   100%
     transform: rotate(-360deg)
+
+@keyframes rotate
+  0%
+    transform: rotate(10deg)
+  25%
+    transform: rotate(0deg)
+  50%
+    transform: rotate(-10deg)
+  75%
+    transform: rotate(0deg)
+  100%
+    transform: rotate(10deg)
+
+@keyframes rotateReverse
+  0%
+    transform: rotate(-10deg)
+  25%
+    transform: rotate(0deg)
+  50%
+    transform: rotate(10deg)
+  75%
+    transform: rotate(0deg)
+  100%
+    transform: rotate(-10deg)
